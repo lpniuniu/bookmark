@@ -6,10 +6,9 @@ target 'bookmark' do
   use_frameworks!
 
   # Pods for bookmark
-  pod 'RAMAnimatedTabBarController', "~> 2.0.13" # swift 3  
   pod 'FlatUIKit', :git => 'https://github.com/lpniuniu/FlatUIKit', :branch => 'master'
-  pod 'SnapKit', '~> 3.0.2'
-  pod 'Bulb', :git => 'https://github.com/lpniuniu/bulb.git', :branch => 'master'
+  pod 'SnapKit'
+  pod 'Bulb', :git => 'https://github.com/lpniuniu/bulb', :branch => 'master'
   target 'bookmarkTests' do
     inherit! :search_paths
     # Pods for testing
