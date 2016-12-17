@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BBE7AC61E0518BB00ED927C /* BookSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBE7AC51E0518BB00ED927C /* BookSlider.swift */; };
 		0BF6AB161DFFD47C00B72C99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */; };
 		0BF6AB181DFFD47C00B72C99 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF6AB171DFFD47C00B72C99 /* BookListViewController.swift */; };
 		0BF6AB1D1DFFD47C00B72C99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		081E0D320AB5F386BE0B9153 /* Pods-bookmark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmark.release.xcconfig"; path = "Pods/Target Support Files/Pods-bookmark/Pods-bookmark.release.xcconfig"; sourceTree = "<group>"; };
+		0BBE7AC51E0518BB00ED927C /* BookSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookSlider.swift; sourceTree = "<group>"; };
 		0BF6AB121DFFD47C00B72C99 /* bookmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BF6AB171DFFD47C00B72C99 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
@@ -66,9 +68,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BBE7AD01E05231A00ED927C /* signals */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = signals;
+			sourceTree = "<group>";
+		};
 		0BF6AB091DFFD47C00B72C99 = {
 			isa = PBXGroup;
 			children = (
+				0BBE7AD01E05231A00ED927C /* signals */,
 				0BF6AB141DFFD47C00B72C99 /* bookmark */,
 				0BF6AB291DFFD47C00B72C99 /* bookmarkTests */,
 				0BF6AB131DFFD47C00B72C99 /* Products */,
@@ -92,6 +102,7 @@
 				0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */,
 				0BF6AB171DFFD47C00B72C99 /* BookListViewController.swift */,
 				E30654AD1E0199C7009B40DE /* BookListTableView.swift */,
+				0BBE7AC51E0518BB00ED927C /* BookSlider.swift */,
 				0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */,
 				0BF6AB1E1DFFD47C00B72C99 /* LaunchScreen.storyboard */,
 				0BF6AB211DFFD47C00B72C99 /* Info.plist */,
@@ -332,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E30654AE1E0199C7009B40DE /* BookListTableView.swift in Sources */,
+				0BBE7AC61E0518BB00ED927C /* BookSlider.swift in Sources */,
 				0BF6AB181DFFD47C00B72C99 /* BookListViewController.swift in Sources */,
 				0BF6AB161DFFD47C00B72C99 /* AppDelegate.swift in Sources */,
 			);

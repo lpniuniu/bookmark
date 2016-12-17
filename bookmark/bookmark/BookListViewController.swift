@@ -14,7 +14,8 @@ class BookListViewController: UIViewController {
     
     
     let bookListTable:BookListTableView = BookListTableView()
-    let pageSlider:UISlider = UISlider()
+    let pageSlider:UISlider = BookSlider()
+    let pageSliderSp:UIView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class BookListViewController: UIViewController {
         view.backgroundColor = UIColor.lightGray
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
         installBookListTableView()
+        installPageSliderSp()
         installPageSlider()
     }
     
@@ -36,18 +38,28 @@ class BookListViewController: UIViewController {
         }
     }
     
+    func installPageSliderSp() {
+        pageSliderSp.backgroundColor = UIColor.clear
+        view.addSubview(pageSliderSp)
+        pageSliderSp.snp.makeConstraints { (maker:ConstraintMaker) in
+            maker.top.equalTo(topLayoutGuide.snp.bottom).offset(5)
+            maker.right.equalTo(view)
+            maker.width.equalTo(30)
+            maker.bottom.equalTo(view).offset(-5)
+        }
+    }
+    
     func installPageSlider() {
-        bookListTable.addSubview(pageSlider)
+        view.addSubview(pageSlider)
         pageSlider.backgroundColor = UIColor.white
         let trans = CGAffineTransform(rotationAngle: CGFloat(M_PI)/2.0)
         pageSlider.transform = trans;
         pageSlider.snp.makeConstraints { (maker:ConstraintMaker) in
-            maker.centerY.equalTo(bookListTable.subviews[0].snp.centerY)
-            maker.centerX.equalTo(view.snp.right).offset(-15)
-            maker.width.equalTo(657)
-            maker.height.equalTo(30)
+            maker.center.equalTo(pageSliderSp)
+            maker.width.equalTo(pageSliderSp.snp.height)
+            maker.height.equalTo(pageSliderSp.snp.width)
         }
-        pageSlider.configureFlatSlider(withTrackColor: UIColor.silver(), progressColor: UIColor.alizarin(), thumbColor: UIColor.greenSea())
+        pageSlider.configureFlatSlider(withTrackColor: UIColor.silver(), progressColor: UIColor.lightGray, thumbColor: UIColor.greenSea())
     }
 
     override func didReceiveMemoryWarning() {

@@ -9,6 +9,7 @@ target 'bookmark' do
   pod 'FlatUIKit', :git => 'https://github.com/lpniuniu/FlatUIKit', :branch => 'master'
   pod 'SnapKit'
   pod 'Bulb', :git => 'https://github.com/lpniuniu/bulb', :branch => 'master'
+  pod 'BlocksKit'
   target 'bookmarkTests' do
     inherit! :search_paths
     # Pods for testing
