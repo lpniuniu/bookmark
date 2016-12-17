@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Bulb
 
 class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
@@ -47,5 +48,9 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         cell.backgroundColor = backgroundColor
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Bulb.bulbGlobal().fire(BookListDidSelectSignal(), data: nil)
     }
 }

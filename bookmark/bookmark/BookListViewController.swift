@@ -51,6 +51,7 @@ class BookListViewController: UIViewController {
     
     func installPageSlider() {
         view.addSubview(pageSlider)
+        pageSlider.alpha = 0
         pageSlider.backgroundColor = UIColor.white
         let trans = CGAffineTransform(rotationAngle: CGFloat(M_PI)/2.0)
         pageSlider.transform = trans;
