@@ -51,6 +51,6 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Bulb.bulbGlobal().fire(BookListDidSelectSignal(), data: nil)
+        Bulb.bulbGlobal().fire(BookListDidSelectSignal().on(), data: nil)
     }
 }

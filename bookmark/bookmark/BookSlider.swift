@@ -23,7 +23,7 @@ class BookSlider: UISlider {
         self.cancelAnimationView.transform = trans;
         
         weak var weakSelf = self
-        Bulb.bulbGlobal().register(BookSliderCancelAnimationViewTouchSignal(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
+        Bulb.bulbGlobal().register(BookSliderCancelAnimationViewTouchSignal().on(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
             weakSelf?.cancelAnimationView.removeFromSuperview()
             weakSelf?.cancelAnimationView.snp.removeConstraints()
             weakSelf?.layer.removeAllAnimations()
@@ -36,7 +36,7 @@ class BookSlider: UISlider {
             self.pushAnimation()
         }, for: .valueChanged)
         
-        Bulb.bulbGlobal().register(BookListDidSelectSignal(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
+        Bulb.bulbGlobal().register(BookListDidSelectSignal().on(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
             
             self.cancelAnimationView.removeFromSuperview()
             self.cancelAnimationView.snp.removeConstraints()
