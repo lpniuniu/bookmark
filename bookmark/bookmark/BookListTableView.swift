@@ -9,8 +9,9 @@
 import UIKit
 import SnapKit
 import Bulb
+import SWTableViewCell
 
-class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
+class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource, SWTableViewCellDelegate {
     
     let cellIdentifier:String = "cellIdentifier"
     
@@ -19,7 +20,7 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         delegate = self
         dataSource = self
         separatorStyle = .none
-        register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        register(SWTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         showsVerticalScrollIndicator = false
     }
     
@@ -41,13 +42,35 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let cell:SWTableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SWTableViewCell
         cell.configureFlatCell(with: UIColor.clouds(), selectedColor: UIColor.greenSea(), roundingCorners:.allCorners)
         cell.cornerRadius = 5.0
         cell.separatorHeight = 20.0
         cell.backgroundColor = backgroundColor
-        
+        cell.rightUtilityButtons = rightButton() as NSArray as! [Any]
+        cell.delegate = self
         return cell
+    }
+    
+    func swipeableTableViewCell(_ cell: SWTableViewCell!, didTriggerRightUtilityButtonWith index: Int) {
+        switch index {
+        case 0:
+            
+            break
+        case 1:
+            
+            break
+        default:
+            
+            break
+        }
+    }
+    
+    func rightButton() -> NSMutableArray {
+        let buttons:NSMutableArray = []
+        buttons.sw_addUtilityButton(with: UIColor.gray, title: "编辑")
+        buttons.sw_addUtilityButton(with: UIColor.red, title: "删除")
+        return buttons
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

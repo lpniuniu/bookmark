@@ -11,6 +11,7 @@ target 'bookmark' do
   pod 'Bulb', :git => 'https://github.com/lpniuniu/bulb', :branch => 'master'
   pod 'BlocksKit'
   pod 'SCLAlertView', :git => 'https://github.com/lpniuniu/SCLAlertView-Swift.git', :branch => 'master'
+  pod 'SWTableViewCell', :git => 'https://github.com/lpniuniu/SWTableViewCell', :branch => 'master'
   target 'bookmarkTests' do
     inherit! :search_paths
     # Pods for testing
