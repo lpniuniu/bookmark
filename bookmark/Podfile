@@ -12,6 +12,7 @@ target 'bookmark' do
   pod 'BlocksKit'
   pod 'SCLAlertView', :git => 'https://github.com/lpniuniu/SCLAlertView-Swift.git', :branch => 'master'
   pod 'SWTableViewCell', :git => 'https://github.com/lpniuniu/SWTableViewCell', :branch => 'master'
+  pod 'RealmSwift'
   target 'bookmarkTests' do
     inherit! :search_paths
     # Pods for testing

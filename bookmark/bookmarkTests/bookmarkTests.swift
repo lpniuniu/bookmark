@@ -21,16 +21,16 @@ class bookmarkTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testRealm() {
+        let book:BookData = BookData()
+        book.name = "网易一千零一夜"
+        book.photo = nil
+        book.pageCurrent = 0
+        book.pageTotal = 300
+        DataMaster.addBook(data: book)
+        
+        let books = DataMaster.getBooks()
+        print(books)
     }
     
 }
