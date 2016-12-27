@@ -61,17 +61,19 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         }
         let nameLabel = UILabel()
         let pageLabel = UILabel()
+        cell.addSubview(nameLabel)
+        cell.addSubview(pageLabel)
         nameLabel.text = realm.objects(BookData.self)[indexPath.row].name
-        pageLabel.text = "\(realm.objects(BookData.self)[indexPath.row].pageCurrent/realm.objects(BookData.self)[indexPath.row].pageTotal)"
+        pageLabel.text = "\(realm.objects(BookData.self)[indexPath.row].pageCurrent)/\(realm.objects(BookData.self)[indexPath.row].pageTotal)"
         nameLabel.snp.remakeConstraints { (make:ConstraintMaker) in
             make.top.equalTo(cell).offset(5)
-            make.left.equalTo(imageView).offset(5)
+            make.left.equalTo(imageView.snp.right).offset(5)
             make.right.equalTo(cell).offset(-5)
             make.height.equalTo(35)
         }
         pageLabel.snp.remakeConstraints { (make:ConstraintMaker) in
-            make.top.equalTo(nameLabel).offset(5)
-            make.left.equalTo(imageView).offset(5)
+            make.top.equalTo(nameLabel.snp.bottom).offset(5)
+            make.left.equalTo(imageView.snp.right).offset(5)
             make.right.equalTo(cell).offset(-5)
             make.height.equalTo(35)
         }
