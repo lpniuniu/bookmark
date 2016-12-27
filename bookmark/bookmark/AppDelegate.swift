@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = UINavigationController(rootViewController: BookListViewController())
         window?.backgroundColor = UIColor.gray
         window?.makeKeyAndVisible()
+        
+        var config = Realm.Configuration.defaultConfiguration
+        config.schemaVersion = 1
+        Realm.Configuration.defaultConfiguration = config
+    
         return true
     }
 

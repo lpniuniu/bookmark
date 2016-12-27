@@ -14,7 +14,7 @@ class BookAddAlertView: SCLAlertView {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        hideCloseBtn()
     }
 
     override func didReceiveMemoryWarning() {

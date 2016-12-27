@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Bulb
 import SWTableViewCell
+import RealmSwift
 
 class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource, SWTableViewCellDelegate {
     
@@ -29,7 +30,8 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        let realm = try! Realm()
+        return realm.objects(BookData.self).count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -48,7 +50,31 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         cell.separatorHeight = 20.0
         cell.backgroundColor = backgroundColor
         cell.rightUtilityButtons = rightButton() as NSArray as! [Any]
+        let realm = try! Realm()
         cell.delegate = self
+        let imageView = UIImageView(image: UIImage(named: "demo"))
+        cell.addSubview(imageView)
+        imageView.snp.remakeConstraints { (make:ConstraintMaker) in
+            make.left.top.equalTo(cell).offset(5)
+            make.bottom.equalTo(cell).offset(-25)
+            make.width.equalTo(90)
+        }
+        let nameLabel = UILabel()
+        let pageLabel = UILabel()
+        nameLabel.text = realm.objects(BookData.self)[indexPath.row].name
+        pageLabel.text = "\(realm.objects(BookData.self)[indexPath.row].pageCurrent/realm.objects(BookData.self)[indexPath.row].pageTotal)"
+        nameLabel.snp.remakeConstraints { (make:ConstraintMaker) in
+            make.top.equalTo(cell).offset(5)
+            make.left.equalTo(imageView).offset(5)
+            make.right.equalTo(cell).offset(-5)
+            make.height.equalTo(35)
+        }
+        pageLabel.snp.remakeConstraints { (make:ConstraintMaker) in
+            make.top.equalTo(nameLabel).offset(5)
+            make.left.equalTo(imageView).offset(5)
+            make.right.equalTo(cell).offset(-5)
+            make.height.equalTo(35)
+        }
         return cell
     }
     

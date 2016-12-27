@@ -12,6 +12,7 @@ import SnapKit
 import Bulb
 import SCLAlertView
 import BlocksKit
+import RealmSwift
 
 class BookListViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -32,6 +33,8 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func addBook() {
+        
+        
         // Bulb.bulbGlobal().fire(AddBookSignal(), data: nil
         alertView = BookAddAlertView()
         alertView?.circleView.bk_(whenTapped: {
@@ -49,7 +52,24 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         alertView?.closeView.bk_(whenTapped: { 
             self.alertView?.hideView()
         })
-        alertView?.showSuccess("Button View", subTitle: "This alert view has buttons")
+        let bookNameTextField = alertView?.addTextField()
+        let pageTextField = alertView?.addTextField()
+        pageTextField?.keyboardType = .numberPad
+        alertView?.addButton("确认", action: { 
+            let imageView:UIImageView? = self.alertView?.circleIconView as? UIImageView
+            let book = BookData()
+            book.name = (bookNameTextField?.text)!
+            book.pageTotal = Int((pageTextField?.text)!)!
+            if ((imageView?.image) != nil) {
+                let data:Data? = UIImagePNGRepresentation((imageView?.image!)!) as Data?
+                book.photo = data
+            }
+            let realm = try! Realm()
+            try! realm.write({ 
+                realm.add(book)
+            })
+        })
+        alertView?.showCustom("请输入书名和页数", subTitle: "", color: UIColor.greenSea(), icon: UIImage())
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
