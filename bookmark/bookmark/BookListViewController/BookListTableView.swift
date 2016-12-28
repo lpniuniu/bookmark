@@ -32,12 +32,12 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         showsVerticalScrollIndicator = false
         
         weak var weakSelf = self
-        Bulb.bulbGlobal().register(BookSavedSignal().on()) { (book:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
+        Bulb.bulbGlobal().register(BookSavedSignal.signalDefault()) { (book:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
             weakSelf?.reloadData()
             return true
         }
         
-        Bulb.bulbGlobal().register(BookChangePageValue().on()) { (book:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
+        Bulb.bulbGlobal().register(BookChangePageValue.signalDefault()) { (book:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
             weakSelf?.reloadData()
             return true
         }
@@ -98,6 +98,6 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let realm = try! Realm()
-        Bulb.bulbGlobal().fire(BookListDidSelectSignal().on(), data: realm.objects(BookData.self)[indexPath.row])
+        Bulb.bulbGlobal().fire(BookListDidSelectSignal.signalDefault(), data: realm.objects(BookData.self)[indexPath.row])
     }
 }

@@ -52,7 +52,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
             picker.allowsEditing = true
             picker.delegate = self
             self.alertView?.present(picker, animated: true, completion: {
-                Bulb.bulbGlobal().register(SystemSelectImageSignal().on().pickOffFromHungUp(), block: { (firstData:Any?, identifier2Signal:[String : BulbSignal]?) in
+                Bulb.bulbGlobal().register(SystemSelectImageSignal.signalDefault().pickOffFromHungUp(), block: { (firstData:Any?, identifier2Signal:[String : BulbSignal]?) in
                     let image:UIImage? = firstData as? UIImage
                     let imageView:UIImageView? = self.alertView?.circleIconView as? UIImageView
                     imageView?.image = image
@@ -78,7 +78,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
             try! realm.write({ 
                 realm.add(book)
             })
-            Bulb.bulbGlobal().fire(BookSavedSignal().on(), data: book)
+            Bulb.bulbGlobal().fire(BookSavedSignal.signalDefault(), data: book)
         })
         alertView?.showCustom("请输入书名和页数", subTitle: "", color: UIColor.greenSea(), icon: UIImage())
     }
@@ -86,7 +86,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image:UIImage = (info[UIImagePickerControllerEditedImage] as? UIImage)!
         picker.dismiss(animated: true, completion: {
-            Bulb.bulbGlobal().hungUpAndFire(SystemSelectImageSignal().on(), data: image)
+            Bulb.bulbGlobal().hungUpAndFire(SystemSelectImageSignal.signalDefault(), data: image)
         })
     }
     

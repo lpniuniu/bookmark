@@ -19,7 +19,7 @@ class BookSliderCancelAnimationViewTouchSignal: BulbBoolSignal {
 class BookSliderCancelAnimationView: UIView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        Bulb.bulbGlobal().fire(BookSliderCancelAnimationViewTouchSignal().on(), data: nil)
+        Bulb.bulbGlobal().fire(BookSliderCancelAnimationViewTouchSignal.signalDefault(), data: nil)
     }
 
 }

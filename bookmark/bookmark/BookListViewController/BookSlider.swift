@@ -29,7 +29,7 @@ class BookSlider: UISlider {
         self.cancelAnimationView.transform = trans;
         
         weak var weakSelf = self
-        Bulb.bulbGlobal().register(BookSliderCancelAnimationViewTouchSignal().on(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
+        Bulb.bulbGlobal().register(BookSliderCancelAnimationViewTouchSignal.signalDefault(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
             weakSelf?.cancelAnimationView.removeFromSuperview()
             weakSelf?.cancelAnimationView.snp.removeConstraints()
             weakSelf?.layer.removeAllAnimations()
@@ -43,11 +43,11 @@ class BookSlider: UISlider {
             try! realm.write({
                 self.bookData?.pageCurrent = Int((sender as! BookSlider).value)
             })
-            Bulb.bulbGlobal().fire(BookChangePageValue().on(), data: self.bookData!)
+            Bulb.bulbGlobal().fire(BookChangePageValue.signalDefault(), data: self.bookData!)
             self.pushAnimation()
         }, for: .valueChanged)
         
-        Bulb.bulbGlobal().register(BookListDidSelectSignal().on(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
+        Bulb.bulbGlobal().register(BookListDidSelectSignal.signalDefault(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
             weakSelf?.cancelAnimationView.removeFromSuperview()
             weakSelf?.cancelAnimationView.snp.removeConstraints()
             weakSelf?.layer.removeAllAnimations()
