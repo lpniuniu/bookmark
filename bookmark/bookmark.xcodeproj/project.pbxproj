@@ -8,19 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0B60F6691E111C2800FDA393 /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6681E111C2800FDA393 /* BookData.swift */; };
-		0B60F6B31E12717A00FDA393 /* demo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B60F6B21E12717A00FDA393 /* demo.png */; };
-		0B60F6B51E13895C00FDA393 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6B41E13895C00FDA393 /* BookCell.swift */; };
-		0BBE7AC61E0518BB00ED927C /* BookSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBE7AC51E0518BB00ED927C /* BookSlider.swift */; };
+		0B60F6C31E139A3100FDA393 /* BookListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6BD1E139A3000FDA393 /* BookListTableView.swift */; };
+		0B60F6C41E139A3100FDA393 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6BE1E139A3000FDA393 /* BookCell.swift */; };
+		0B60F6C51E139A3100FDA393 /* BookSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6BF1E139A3000FDA393 /* BookSlider.swift */; };
+		0B60F6C61E139A3100FDA393 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6C01E139A3000FDA393 /* BookListViewController.swift */; };
+		0B60F6C71E139A3100FDA393 /* BookSliderCancelAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6C11E139A3000FDA393 /* BookSliderCancelAnimationView.swift */; };
+		0B60F6C81E139A3100FDA393 /* BookAddAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6C21E139A3000FDA393 /* BookAddAlertView.swift */; };
 		0BF6AB161DFFD47C00B72C99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */; };
-		0BF6AB181DFFD47C00B72C99 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF6AB171DFFD47C00B72C99 /* BookListViewController.swift */; };
 		0BF6AB1D1DFFD47C00B72C99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */; };
 		0BF6AB201DFFD47C00B72C99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF6AB1E1DFFD47C00B72C99 /* LaunchScreen.storyboard */; };
 		0BF6AB2B1DFFD47C00B72C99 /* bookmarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF6AB2A1DFFD47C00B72C99 /* bookmarkTests.swift */; };
 		8CF417632DFDB9FB69BEAB3A /* Pods_bookmarkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B8921AEEE3C610574BEDBD /* Pods_bookmarkTests.framework */; };
 		A24AEB161E62FCF445A7DE32 /* Pods_bookmark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2284B64C52341F0B8A05A82D /* Pods_bookmark.framework */; };
-		E30654AE1E0199C7009B40DE /* BookListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30654AD1E0199C7009B40DE /* BookListTableView.swift */; };
-		E371E49A1E0593A6008319A4 /* BookSliderCancelAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371E4991E0593A6008319A4 /* BookSliderCancelAnimationView.swift */; };
-		E371E4A01E065DDA008319A4 /* BookAddAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371E49F1E065DDA008319A4 /* BookAddAlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,12 +35,14 @@
 /* Begin PBXFileReference section */
 		081E0D320AB5F386BE0B9153 /* Pods-bookmark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmark.release.xcconfig"; path = "Pods/Target Support Files/Pods-bookmark/Pods-bookmark.release.xcconfig"; sourceTree = "<group>"; };
 		0B60F6681E111C2800FDA393 /* BookData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookData.swift; path = bookmark/data/BookData.swift; sourceTree = "<group>"; };
-		0B60F6B21E12717A00FDA393 /* demo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demo.png; sourceTree = "<group>"; };
-		0B60F6B41E13895C00FDA393 /* BookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
-		0BBE7AC51E0518BB00ED927C /* BookSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookSlider.swift; sourceTree = "<group>"; };
+		0B60F6BD1E139A3000FDA393 /* BookListTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookListTableView.swift; path = BookListViewController/BookListTableView.swift; sourceTree = "<group>"; };
+		0B60F6BE1E139A3000FDA393 /* BookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookCell.swift; path = BookListViewController/BookCell.swift; sourceTree = "<group>"; };
+		0B60F6BF1E139A3000FDA393 /* BookSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookSlider.swift; path = BookListViewController/BookSlider.swift; sourceTree = "<group>"; };
+		0B60F6C01E139A3000FDA393 /* BookListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookListViewController.swift; path = BookListViewController/BookListViewController.swift; sourceTree = "<group>"; };
+		0B60F6C11E139A3000FDA393 /* BookSliderCancelAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookSliderCancelAnimationView.swift; path = BookListViewController/BookSliderCancelAnimationView.swift; sourceTree = "<group>"; };
+		0B60F6C21E139A3000FDA393 /* BookAddAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookAddAlertView.swift; path = BookListViewController/BookAddAlertView.swift; sourceTree = "<group>"; };
 		0BF6AB121DFFD47C00B72C99 /* bookmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0BF6AB171DFFD47C00B72C99 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BF6AB1F1DFFD47C00B72C99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BF6AB211DFFD47C00B72C99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,9 +53,6 @@
 		68EFF4CB35A05215C7321315 /* Pods-bookmarkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bookmarkTests/Pods-bookmarkTests.release.xcconfig"; sourceTree = "<group>"; };
 		73117A30AA8BFAFF92233EC8 /* Pods-bookmark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bookmark/Pods-bookmark.debug.xcconfig"; sourceTree = "<group>"; };
 		95B8921AEEE3C610574BEDBD /* Pods_bookmarkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookmarkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E30654AD1E0199C7009B40DE /* BookListTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookListTableView.swift; sourceTree = "<group>"; };
-		E371E4991E0593A6008319A4 /* BookSliderCancelAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookSliderCancelAnimationView.swift; sourceTree = "<group>"; };
-		E371E49F1E065DDA008319A4 /* BookAddAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookAddAlertView.swift; sourceTree = "<group>"; };
 		EB3D22468C03DF17FA11E216 /* Pods-bookmarkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bookmarkTests/Pods-bookmarkTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,10 +84,22 @@
 			name = data;
 			sourceTree = "<group>";
 		};
+		0B60F6BC1E1399F500FDA393 /* BookListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0B60F6BD1E139A3000FDA393 /* BookListTableView.swift */,
+				0B60F6BE1E139A3000FDA393 /* BookCell.swift */,
+				0B60F6BF1E139A3000FDA393 /* BookSlider.swift */,
+				0B60F6C01E139A3000FDA393 /* BookListViewController.swift */,
+				0B60F6C11E139A3000FDA393 /* BookSliderCancelAnimationView.swift */,
+				0B60F6C21E139A3000FDA393 /* BookAddAlertView.swift */,
+			);
+			name = BookListViewController;
+			sourceTree = "<group>";
+		};
 		0BF6AB091DFFD47C00B72C99 = {
 			isa = PBXGroup;
 			children = (
-				0B60F6B21E12717A00FDA393 /* demo.png */,
 				0B60F6671E111C0900FDA393 /* data */,
 				0BF6AB141DFFD47C00B72C99 /* bookmark */,
 				0BF6AB291DFFD47C00B72C99 /* bookmarkTests */,
@@ -112,12 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */,
-				0BF6AB171DFFD47C00B72C99 /* BookListViewController.swift */,
-				E30654AD1E0199C7009B40DE /* BookListTableView.swift */,
-				0BBE7AC51E0518BB00ED927C /* BookSlider.swift */,
-				E371E4991E0593A6008319A4 /* BookSliderCancelAnimationView.swift */,
-				E371E49F1E065DDA008319A4 /* BookAddAlertView.swift */,
-				0B60F6B41E13895C00FDA393 /* BookCell.swift */,
+				0B60F6BC1E1399F500FDA393 /* BookListViewController */,
 				0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */,
 				0BF6AB1E1DFFD47C00B72C99 /* LaunchScreen.storyboard */,
 				0BF6AB211DFFD47C00B72C99 /* Info.plist */,
@@ -210,6 +215,7 @@
 				TargetAttributes = {
 					0BF6AB111DFFD47C00B72C99 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 327979M4M2;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -247,7 +253,6 @@
 			files = (
 				0BF6AB201DFFD47C00B72C99 /* LaunchScreen.storyboard in Resources */,
 				0BF6AB1D1DFFD47C00B72C99 /* Assets.xcassets in Resources */,
-				0B60F6B31E12717A00FDA393 /* demo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,14 +363,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E30654AE1E0199C7009B40DE /* BookListTableView.swift in Sources */,
+				0B60F6C81E139A3100FDA393 /* BookAddAlertView.swift in Sources */,
+				0B60F6C41E139A3100FDA393 /* BookCell.swift in Sources */,
+				0B60F6C31E139A3100FDA393 /* BookListTableView.swift in Sources */,
 				0B60F6691E111C2800FDA393 /* BookData.swift in Sources */,
-				E371E49A1E0593A6008319A4 /* BookSliderCancelAnimationView.swift in Sources */,
-				E371E4A01E065DDA008319A4 /* BookAddAlertView.swift in Sources */,
-				0B60F6B51E13895C00FDA393 /* BookCell.swift in Sources */,
-				0BBE7AC61E0518BB00ED927C /* BookSlider.swift in Sources */,
-				0BF6AB181DFFD47C00B72C99 /* BookListViewController.swift in Sources */,
+				0B60F6C71E139A3100FDA393 /* BookSliderCancelAnimationView.swift in Sources */,
+				0B60F6C51E139A3100FDA393 /* BookSlider.swift in Sources */,
 				0BF6AB161DFFD47C00B72C99 /* AppDelegate.swift in Sources */,
+				0B60F6C61E139A3100FDA393 /* BookListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +500,7 @@
 			baseConfigurationReference = 73117A30AA8BFAFF92233EC8 /* Pods-bookmark.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 327979M4M2;
 				INFOPLIST_FILE = bookmark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.niuniu.bookmark;
@@ -508,6 +514,7 @@
 			baseConfigurationReference = 081E0D320AB5F386BE0B9153 /* Pods-bookmark.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 327979M4M2;
 				INFOPLIST_FILE = bookmark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.niuniu.bookmark;

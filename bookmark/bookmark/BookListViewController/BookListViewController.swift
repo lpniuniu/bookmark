@@ -30,6 +30,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
     let pageSlider:UISlider = BookSlider()
     let pageSliderSp:UIView = UIView()
     var alertView:BookAddAlertView?
+    var bulb:Bulb = Bulb.bulbGlobal()
     
     override func viewDidLoad() {
         super.viewDidLoad()
