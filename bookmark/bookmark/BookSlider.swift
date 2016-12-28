@@ -10,12 +10,18 @@ import UIKit
 import BlocksKit
 import SnapKit
 import Bulb
+import RealmSwift
+
+// what she say
+class BookChangePageValue: BulbBoolSignal {
+
+}
 
 class BookSlider: UISlider {
 
     let cancelAnimationView:BookSliderCancelAnimationView = BookSliderCancelAnimationView()
     var timer:Timer? = nil
-    
+    var bookData:BookData? = nil
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -33,17 +39,26 @@ class BookSlider: UISlider {
         
         self.bk_addEventHandler({ (sender:Any) in
             print("\((sender as! BookSlider).value)")
+            let realm = try! Realm()
+            try! realm.write({
+                self.bookData?.pageCurrent = Int((sender as! BookSlider).value)
+            })
+            Bulb.bulbGlobal().fire(BookChangePageValue().on(), data: self.bookData!)
             self.pushAnimation()
         }, for: .valueChanged)
         
         Bulb.bulbGlobal().register(BookListDidSelectSignal().on(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
-            
-            self.cancelAnimationView.removeFromSuperview()
-            self.cancelAnimationView.snp.removeConstraints()
-            self.layer.removeAllAnimations()
-            self.alpha = 1
-            self.timer?.invalidate()
-            self.timer = nil
+            weakSelf?.cancelAnimationView.removeFromSuperview()
+            weakSelf?.cancelAnimationView.snp.removeConstraints()
+            weakSelf?.layer.removeAllAnimations()
+            weakSelf?.alpha = 1
+            weakSelf?.timer?.invalidate()
+            weakSelf?.timer = nil
+
+            weakSelf?.bookData = firstData as? BookData
+            weakSelf?.minimumValue = 0
+            weakSelf?.maximumValue = Float((weakSelf?.bookData!.pageTotal)!)
+            weakSelf?.setValue(Float((weakSelf?.bookData!.pageCurrent)!), animated: true)
             
             return true
         })

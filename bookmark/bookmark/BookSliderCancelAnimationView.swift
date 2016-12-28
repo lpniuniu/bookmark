@@ -9,6 +9,13 @@
 import UIKit
 import Bulb
 
+// what she say
+class BookSliderCancelAnimationViewTouchSignal: BulbBoolSignal {
+    override class func description() -> String {
+        return "BookSliderCancelAnimationView touch";
+    }
+}
+
 class BookSliderCancelAnimationView: UIView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -16,3 +23,4 @@ class BookSliderCancelAnimationView: UIView {
     }
 
 }
+

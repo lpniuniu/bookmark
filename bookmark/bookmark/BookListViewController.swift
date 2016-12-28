@@ -14,6 +14,15 @@ import SCLAlertView
 import BlocksKit
 import RealmSwift
 
+// what she say
+class SystemSelectImageSignal: BulbBoolSignal {
+    
+}
+
+class BookSavedSignal: BulbBoolSignal {
+    
+}
+
 class BookListViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
@@ -68,6 +77,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
             try! realm.write({ 
                 realm.add(book)
             })
+            Bulb.bulbGlobal().fire(BookSavedSignal().on(), data: book)
         })
         alertView?.showCustom("请输入书名和页数", subTitle: "", color: UIColor.greenSea(), icon: UIImage())
     }
