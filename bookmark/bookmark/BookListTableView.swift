@@ -83,26 +83,15 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
     }
     
     func swipeableTableViewCell(_ cell: SWTableViewCell!, didTriggerRightUtilityButtonWith index: Int) {
-        switch index {
-        case 0:
-            
-            break
-        case 1: // 删除
-            let realm = try! Realm()
-            try! realm.write({
-                realm.delete(realm.objects(BookData.self)[(indexPath(for: cell)?.row)!])
-            })
-            deleteRows(at:[indexPath(for: cell)!], with: .fade)
-            break
-        default:
-            
-            break
-        }
+        let realm = try! Realm()
+        try! realm.write({
+            realm.delete(realm.objects(BookData.self)[(indexPath(for: cell)?.row)!])
+        })
+        deleteRows(at:[indexPath(for: cell)!], with: .fade)
     }
     
     func rightButton() -> NSMutableArray {
         let buttons:NSMutableArray = []
-        buttons.sw_addUtilityButton(with: UIColor.gray, title: "编辑")
         buttons.sw_addUtilityButton(with: UIColor.red, title: "删除")
         return buttons
     }
