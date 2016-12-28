@@ -51,7 +51,7 @@ class BookCell: SWTableViewCell {
         bookImageView?.snp.remakeConstraints { (make:ConstraintMaker) in
             make.left.top.equalTo(self).offset(5)
             make.bottom.equalTo(self).offset(-25)
-            make.width.equalTo(90)
+            make.width.equalTo(180)
         }
         nameLabel?.snp.remakeConstraints { (make:ConstraintMaker) in
             make.top.equalTo(self).offset(5)

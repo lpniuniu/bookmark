@@ -72,6 +72,9 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         
         let realm = try! Realm()
         cell.bookImageView = UIImageView()
+        if let imageData = realm.objects(BookData.self)[indexPath.row].photo {
+            cell.bookImageView?.image = UIImage(data:imageData)
+        }
         cell.nameLabel = UILabel()
         cell.pageLabel = UILabel()
         cell.nameLabel?.text = realm.objects(BookData.self)[indexPath.row].name
@@ -84,8 +87,12 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         case 0:
             
             break
-        case 1:
-            
+        case 1: // 删除
+            let realm = try! Realm()
+            try! realm.write({
+                realm.delete(realm.objects(BookData.self)[(indexPath(for: cell)?.row)!])
+            })
+            deleteRows(at:[indexPath(for: cell)!], with: .fade)
             break
         default:
             
