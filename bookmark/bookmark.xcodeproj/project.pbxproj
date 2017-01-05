@@ -12,7 +12,6 @@
 		0B60F6C41E139A3100FDA393 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6BE1E139A3000FDA393 /* BookCell.swift */; };
 		0B60F6C51E139A3100FDA393 /* BookSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6BF1E139A3000FDA393 /* BookSlider.swift */; };
 		0B60F6C61E139A3100FDA393 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6C01E139A3000FDA393 /* BookListViewController.swift */; };
-		0B60F6C71E139A3100FDA393 /* BookSliderCancelAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6C11E139A3000FDA393 /* BookSliderCancelAnimationView.swift */; };
 		0B60F6C81E139A3100FDA393 /* BookAddAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6C21E139A3000FDA393 /* BookAddAlertView.swift */; };
 		0BB6AAEB1E1E2F2800B064CB /* ArrowSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB6AAEA1E1E2F2800B064CB /* ArrowSlider.swift */; };
 		0BF6AB161DFFD47C00B72C99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */; };
@@ -40,7 +39,6 @@
 		0B60F6BE1E139A3000FDA393 /* BookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookCell.swift; path = BookListViewController/BookCell.swift; sourceTree = "<group>"; };
 		0B60F6BF1E139A3000FDA393 /* BookSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookSlider.swift; path = BookListViewController/BookSlider.swift; sourceTree = "<group>"; };
 		0B60F6C01E139A3000FDA393 /* BookListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookListViewController.swift; path = BookListViewController/BookListViewController.swift; sourceTree = "<group>"; };
-		0B60F6C11E139A3000FDA393 /* BookSliderCancelAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookSliderCancelAnimationView.swift; path = BookListViewController/BookSliderCancelAnimationView.swift; sourceTree = "<group>"; };
 		0B60F6C21E139A3000FDA393 /* BookAddAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookAddAlertView.swift; path = BookListViewController/BookAddAlertView.swift; sourceTree = "<group>"; };
 		0BB6AAEA1E1E2F2800B064CB /* ArrowSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrowSlider.swift; path = third_party/ArrowSlider/ArrowSliderDemo/ArrowSliderDemo/ArrowSlider.swift; sourceTree = SOURCE_ROOT; };
 		0BF6AB121DFFD47C00B72C99 /* bookmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,7 +91,6 @@
 				0B60F6BE1E139A3000FDA393 /* BookCell.swift */,
 				0B60F6BF1E139A3000FDA393 /* BookSlider.swift */,
 				0B60F6C01E139A3000FDA393 /* BookListViewController.swift */,
-				0B60F6C11E139A3000FDA393 /* BookSliderCancelAnimationView.swift */,
 				0B60F6C21E139A3000FDA393 /* BookAddAlertView.swift */,
 			);
 			name = BookListViewController;
@@ -379,7 +376,6 @@
 				0BB6AAEB1E1E2F2800B064CB /* ArrowSlider.swift in Sources */,
 				0B60F6C31E139A3100FDA393 /* BookListTableView.swift in Sources */,
 				0B60F6691E111C2800FDA393 /* BookData.swift in Sources */,
-				0B60F6C71E139A3100FDA393 /* BookSliderCancelAnimationView.swift in Sources */,
 				0B60F6C51E139A3100FDA393 /* BookSlider.swift in Sources */,
 				0BF6AB161DFFD47C00B72C99 /* AppDelegate.swift in Sources */,
 				0B60F6C61E139A3100FDA393 /* BookListViewController.swift in Sources */,

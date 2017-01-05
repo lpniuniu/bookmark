@@ -18,9 +18,6 @@ class BookChangePageValue: BulbBoolSignal {
 }
 
 class BookSlider: ArrowSlider {
-
-    let cancelAnimationView:BookSliderCancelAnimationView = BookSliderCancelAnimationView()
-    var timer:Timer? = nil
     var bookData:BookData? = nil
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,13 +33,6 @@ class BookSlider: ArrowSlider {
         }
         
         Bulb.bulbGlobal().register(BookListDidSelectSignal.signalDefault(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
-            weakSelf?.cancelAnimationView.removeFromSuperview()
-            weakSelf?.cancelAnimationView.snp.removeConstraints()
-            weakSelf?.layer.removeAllAnimations()
-            weakSelf?.alpha = 1
-            weakSelf?.timer?.invalidate()
-            weakSelf?.timer = nil
-
             weakSelf?.bookData = firstData as? BookData
             weakSelf?.maxValue = (weakSelf?.bookData!.pageTotal)!
             weakSelf?.refreshValue(value: (weakSelf?.bookData!.pageCurrent)!)
