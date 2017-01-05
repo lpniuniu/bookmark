@@ -12,6 +12,16 @@ import SnapKit
 
 class BookCell: SWTableViewCell {
     
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        selectionStyle = .none
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private var _bookImageView:UIImageView? = nil
     var bookImageView:UIImageView? {
         set {

@@ -95,7 +95,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         bookListTable.snp.makeConstraints { (maker:ConstraintMaker) in
             maker.top.equalTo(view).offset(10)
             maker.left.equalTo(view).offset(10)
-            maker.right.equalTo(view).offset(-10)
+            maker.right.equalTo(view).offset(-40)
             maker.bottom.equalTo(view)
         }
     }
@@ -106,12 +106,12 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         pageSlider.chunk.themeColor = UIColor.greenSea()
         pageSlider.unselectColor = UIColor.black
         pageSlider.alpha = 0
-        pageSlider.backgroundColor = UIColor.clear
+        pageSlider.backgroundColor = UIColor.clouds()
         pageSlider.snp.makeConstraints { (maker:ConstraintMaker) in
-            maker.top.equalTo(topLayoutGuide.snp.bottom).offset(5)
+            maker.top.equalTo(topLayoutGuide.snp.bottom)
             maker.right.equalTo(view)
             maker.width.equalTo(30)
-            maker.bottom.equalTo(view).offset(-5)
+            maker.bottom.equalTo(view)
         }
     }
 
