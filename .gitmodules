@@ -1,0 +1,3 @@
+[submodule "bookmark/third_party/ArrowSlider"]
+	path = bookmark/third_party/ArrowSlider
+	url = git@github.com:lpniuniu/ArrowSlider.git
