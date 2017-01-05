@@ -27,8 +27,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     let bookListTable:BookListTableView = BookListTableView()
-    let pageSlider:UISlider = BookSlider()
-    let pageSliderSp:UIView = UIView()
+    let pageSlider:BookSlider = BookSlider()
     var alertView:BookAddAlertView?
     var bulb:Bulb = Bulb.bulbGlobal()
     
@@ -38,14 +37,10 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         view.backgroundColor = UIColor.lightGray
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(self.addBook))
         installBookListTableView()
-        installPageSliderSp()
         installPageSlider()
     }
     
     func addBook() {
-        
-        
-        // Bulb.bulbGlobal().fire(AddBookSignal(), data: nil
         alertView = BookAddAlertView()
         alertView?.circleView.bk_(whenTapped: {
             let picker = UIImagePickerController()
@@ -105,29 +100,19 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
-    func installPageSliderSp() {
-        pageSliderSp.backgroundColor = UIColor.clear
-        view.addSubview(pageSliderSp)
-        pageSliderSp.snp.makeConstraints { (maker:ConstraintMaker) in
+    func installPageSlider() {
+        view.addSubview(pageSlider)
+        pageSlider.selectedColor = UIColor.silver()
+        pageSlider.chunk.themeColor = UIColor.greenSea()
+        pageSlider.unselectColor = UIColor.black
+        pageSlider.alpha = 0
+        pageSlider.backgroundColor = UIColor.clear
+        pageSlider.snp.makeConstraints { (maker:ConstraintMaker) in
             maker.top.equalTo(topLayoutGuide.snp.bottom).offset(5)
             maker.right.equalTo(view)
             maker.width.equalTo(30)
             maker.bottom.equalTo(view).offset(-5)
         }
-    }
-    
-    func installPageSlider() {
-        view.addSubview(pageSlider)
-        pageSlider.alpha = 0
-        pageSlider.backgroundColor = UIColor.white
-        let trans = CGAffineTransform(rotationAngle: CGFloat(M_PI)/2.0)
-        pageSlider.transform = trans;
-        pageSlider.snp.makeConstraints { (maker:ConstraintMaker) in
-            maker.center.equalTo(pageSliderSp)
-            maker.width.equalTo(pageSliderSp.snp.height)
-            maker.height.equalTo(pageSliderSp.snp.width)
-        }
-        pageSlider.configureFlatSlider(withTrackColor: UIColor.silver(), progressColor: UIColor.lightGray, thumbColor: UIColor.greenSea())
     }
 
     override func didReceiveMemoryWarning() {
