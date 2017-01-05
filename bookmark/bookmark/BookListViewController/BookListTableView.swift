@@ -19,9 +19,16 @@ class BookListDidSelectSignal: BulbBoolSignal {
     }
 }
 
+class BookListDidDeselectSignal: BulbBoolSignal {
+    override class func description() -> String {
+        return "BookList is not selected";
+    }
+}
+
 class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource, SWTableViewCellDelegate {
     
     let cellIdentifier:String = "cellIdentifier"
+    var selectIndexPath:IndexPath? = nil
     
     override init(frame:CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -34,11 +41,19 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         weak var weakSelf = self
         Bulb.bulbGlobal().register(BookSavedSignal.signalDefault()) { (book:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
             weakSelf?.reloadData()
+            
+            if weakSelf?.selectIndexPath != nil {
+                weakSelf?.selectRow(at: weakSelf?.selectIndexPath, animated: true, scrollPosition: .none)
+            }
             return true
         }
         
         Bulb.bulbGlobal().register(BookChangePageValue.signalDefault()) { (book:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
             weakSelf?.reloadData()
+            
+            if weakSelf?.selectIndexPath != nil {
+                weakSelf?.selectRow(at: weakSelf?.selectIndexPath, animated: true, scrollPosition: .none)
+            }
             return true
         }
     }
@@ -88,6 +103,7 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
             realm.delete(realm.objects(BookData.self)[(indexPath(for: cell)?.row)!])
         })
         deleteRows(at:[indexPath(for: cell)!], with: .fade)
+        Bulb.bulbGlobal().fire(BookListDidDeselectSignal.signalDefault(), data:nil)
     }
     
     func rightButton() -> NSMutableArray {
@@ -97,7 +113,14 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectIndexPath = indexPath
         let realm = try! Realm()
         Bulb.bulbGlobal().fire(BookListDidSelectSignal.signalDefault(), data: realm.objects(BookData.self)[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        selectIndexPath = nil
+        let realm = try! Realm()
+        Bulb.bulbGlobal().fire(BookListDidDeselectSignal.signalDefault(), data: realm.objects(BookData.self)[indexPath.row])
     }
 }

@@ -33,14 +33,29 @@ class BookSlider: ArrowSlider {
         }
         
         Bulb.bulbGlobal().register(BookListDidSelectSignal.signalDefault(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
+
+            weakSelf?.showSlider()
             weakSelf?.bookData = firstData as? BookData
             weakSelf?.maxValue = (weakSelf?.bookData!.pageTotal)!
             weakSelf?.refreshValue(value: (weakSelf?.bookData!.pageCurrent)!)
+            return true
+        })
+        
+        Bulb.bulbGlobal().register(BookListDidDeselectSignal.signalDefault(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
+            weakSelf?.hideSlider()
             return true
         })
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func hideSlider() {
+        isHidden = true
+    }
+    
+    func showSlider() {
+        isHidden = false
     }
 }

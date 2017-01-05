@@ -95,9 +95,39 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         bookListTable.snp.makeConstraints { (maker:ConstraintMaker) in
             maker.top.equalTo(view).offset(10)
             maker.left.equalTo(view).offset(10)
-            maker.right.equalTo(view).offset(-40)
+            maker.right.equalTo(view).offset(-10)
             maker.bottom.equalTo(view)
         }
+        
+        weak var weakSelf = self
+        Bulb.bulbGlobal().register(BookListDidSelectSignal.signalDefault(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
+            weakSelf?.bookListTable.snp.remakeConstraints { (maker:ConstraintMaker) in
+                maker.top.equalTo((weakSelf?.view)!).offset(10)
+                maker.left.equalTo((weakSelf?.view)!).offset(10)
+                maker.right.equalTo((weakSelf?.view)!).offset(-40)
+                maker.bottom.equalTo((weakSelf?.view)!)
+            }
+            UIView.animate(withDuration: 0.3, animations: {
+                weakSelf?.bookListTable.layoutIfNeeded()
+            })
+
+            return true
+        })
+        
+        Bulb.bulbGlobal().register(BookListDidDeselectSignal.signalDefault(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
+            
+            weakSelf?.bookListTable.snp.remakeConstraints { (maker:ConstraintMaker) in
+                maker.top.equalTo((weakSelf?.view)!).offset(10)
+                maker.left.equalTo((weakSelf?.view)!).offset(10)
+                maker.right.equalTo((weakSelf?.view)!).offset(-10)
+                maker.bottom.equalTo((weakSelf?.view)!)
+            }
+            UIView.animate(withDuration: 0.3, animations: {
+                
+                weakSelf?.bookListTable.layoutIfNeeded()
+            })
+            return true
+        })
     }
     
     func installPageSlider() {
@@ -105,7 +135,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         pageSlider.selectedColor = UIColor.silver()
         pageSlider.chunk.themeColor = UIColor.greenSea()
         pageSlider.unselectColor = UIColor.black
-        pageSlider.alpha = 0
+        pageSlider.hideSlider()
         pageSlider.backgroundColor = UIColor.clouds()
         pageSlider.snp.makeConstraints { (maker:ConstraintMaker) in
             maker.top.equalTo(topLayoutGuide.snp.bottom)
