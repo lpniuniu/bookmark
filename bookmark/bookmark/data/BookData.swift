@@ -12,6 +12,8 @@ import RealmSwift
 class BookData: Object {
     dynamic var name:String = ""
     dynamic var photo:Data? = nil
+    dynamic var photoUrl:String? = nil
     dynamic var pageCurrent:Int = 0
     dynamic var pageTotal:Int = 0
+    dynamic var serverId:String = ""
 }

@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import Kingfisher
+import Bulb
+import RealmSwift
 
 class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
@@ -26,6 +28,30 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
         
         searchBar.delegate = self
         tableHeaderView = searchBar
+        
+        weak var weakSelf = self
+        Bulb.bulbGlobal().register(BookSearchCellAddBookButtonClickSignal.signalDefault()) { (cell:Any?, identifier2Signal:[String:BulbSignal]?) -> Bool in
+            
+            guard let index:IndexPath = self.indexPath(for: cell as! BookSearchCell) else {
+                return true
+            }
+            let book = weakSelf?.searchData[index.row]
+            let newbook = BookData()
+            newbook.name = (book?.object(forKey: "title") as? String)!
+            newbook.pageTotal = Int((book?.object(forKey: "pages") as? String)!)!
+            newbook.photoUrl = book?.object(forKey: "image") as? String
+            newbook.serverId = (book?.object(forKey: "id") as? String)!
+            
+            let realm = try! Realm()
+            let result = realm.objects(BookData.self).filter("serverId == '\(newbook.serverId)'")
+            if result.count == 0 {
+                try! realm.write {
+                    realm.add(newbook)
+                }
+                Bulb.bulbGlobal().fire(BookSavedSignal.signalDefault(), data: newbook)
+            }
+            return true
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -63,7 +89,9 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
         cell.pageLabel = UILabel()
         cell.nameLabel?.text = book.object(forKey: "title") as? String
         cell.pageLabel?.text = book.object(forKey: "pages") as? String
-        
+        cell.addBookButton.bk_(whenTapped: {
+            Bulb.bulbGlobal().fire(BookSearchCellAddBookButtonClickSignal.signalDefault(), data: cell)
+        })
         return cell
     }
     
@@ -95,6 +123,9 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
                         continue
                     }
                     guard let bookImage = book.object(forKey: "image") as! String?, bookImage != ""  else {
+                        continue
+                    }
+                    guard let bookId = book.object(forKey: "id") as! String?, bookId != ""  else {
                         continue
                     }
                     self.searchData.append(book)
