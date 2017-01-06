@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Kingfisher
 
 class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
@@ -56,6 +57,8 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
         
         let book = searchData[indexPath.row]
         cell.bookImageView = UIImageView()
+        let url = URL(string: book.object(forKey: "image") as! String)
+        cell.bookImageView?.kf.setImage(with: url)
         cell.nameLabel = UILabel()
         cell.pageLabel = UILabel()
         cell.nameLabel?.text = book.object(forKey: "title") as? String
@@ -89,6 +92,9 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
                         continue
                     }
                     guard let bookPage = book.object(forKey: "pages") as! String?, bookPage != ""  else {
+                        continue
+                    }
+                    guard let bookImage = book.object(forKey: "image") as! String?, bookImage != ""  else {
                         continue
                     }
                     self.searchData.append(book)
