@@ -25,19 +25,22 @@ class BookSavedSignal: BulbBoolSignal {
 
 class BookListViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
     let bookListTable:BookListTableView = BookListTableView()
     let pageSlider:BookSlider = BookSlider()
     var alertView:BookAddAlertView?
-    var bulb:Bulb = Bulb.bulbGlobal()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.lightGray
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(self.addBook))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action:#selector(self.searchBook))
         installBookListTableView()
         installPageSlider()
+    }
+    
+    func searchBook() {
+        self.navigationController?.pushViewController(BookSearchViewController(), animated: true)
     }
     
     func addBook() {

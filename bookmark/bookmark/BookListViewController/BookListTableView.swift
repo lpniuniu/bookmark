@@ -27,7 +27,7 @@ class BookListDidDeselectSignal: BulbBoolSignal {
 
 class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource, SWTableViewCellDelegate {
     
-    let cellIdentifier:String = "cellIdentifier"
+    let cellIdentifier:String = "book_list_cellIdentifier"
     var selectIndexPath:IndexPath? = nil
     
     override init(frame:CGRect, style: UITableViewStyle) {
