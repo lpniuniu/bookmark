@@ -13,7 +13,7 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
 
     let cellIdentifier:String = "book_search_cellIdentifier"
     let searchBar:UISearchBar = UISearchBar()
-    var searchData:NSArray = []
+    var searchData:Array = [NSDictionary]()
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -21,7 +21,7 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
         delegate = self
         dataSource = self
         
-        register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        register(BookSearchCell.self, forCellReuseIdentifier: cellIdentifier)
         
         searchBar.delegate = self
         tableHeaderView = searchBar
@@ -51,7 +51,16 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let cell:BookSearchCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! BookSearchCell
+        
+        
+        let book = searchData[indexPath.row]
+        cell.bookImageView = UIImageView()
+        cell.nameLabel = UILabel()
+        cell.pageLabel = UILabel()
+        cell.nameLabel?.text = book.object(forKey: "title") as? String
+        cell.pageLabel?.text = book.object(forKey: "pages") as? String
+        
         return cell
     }
     
@@ -70,8 +79,22 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
                 guard let books = json.object(forKey: "books") as? NSArray else {
                     return
                 }
-                self.searchData = books
+                
+                self.searchData.removeAll()
+                for book in books {
+                    guard let book = book as? NSDictionary else {
+                        continue
+                    }
+                    guard let bookName = book.object(forKey: "title") as! String?, bookName != "" else {
+                        continue
+                    }
+                    guard let bookPage = book.object(forKey: "pages") as! String?, bookPage != ""  else {
+                        continue
+                    }
+                    self.searchData.append(book)
+                }
                 self.reloadData()
+                self.endEditing(true)
             }
         }
     }
