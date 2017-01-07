@@ -33,7 +33,7 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
         Bulb.bulbGlobal().register(BookSearchCellAddBookButtonClickSignal.signalDefault()) { (cell:Any?, identifier2Signal:[String:BulbSignal]?) -> Bool in
             
             guard let index:IndexPath = self.indexPath(for: cell as! BookSearchCell) else {
-                return true
+                return false
             }
             let book = weakSelf?.searchData[index.row]
             let newbook = BookData()
