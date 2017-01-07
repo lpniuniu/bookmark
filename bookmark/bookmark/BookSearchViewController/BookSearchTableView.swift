@@ -82,13 +82,10 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
         
         
         let book = searchData[indexPath.row]
-        cell.bookImageView = UIImageView()
         let url = URL(string: book.object(forKey: "image") as! String)
-        cell.bookImageView?.kf.setImage(with: url)
-        cell.nameLabel = UILabel()
-        cell.pageLabel = UILabel()
-        cell.nameLabel?.text = book.object(forKey: "title") as? String
-        cell.pageLabel?.text = book.object(forKey: "pages") as? String
+        cell.bookImageView.kf.setImage(with: url)
+        cell.nameLabel.text = book.object(forKey: "title") as? String
+        cell.pageLabel.text = book.object(forKey: "pages") as? String
         cell.addBookButton.bk_(whenTapped: {
             Bulb.bulbGlobal().fire(BookSearchCellAddBookButtonClickSignal.signalDefault(), data: cell)
         })

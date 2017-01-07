@@ -86,17 +86,14 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         cell.delegate = self
         
         let realm = try! Realm()
-        cell.bookImageView = UIImageView()
         if let imageData = realm.objects(BookData.self)[indexPath.row].photo {
-            cell.bookImageView?.image = UIImage(data:imageData)
+            cell.bookImageView.image = UIImage(data:imageData)
         } else if let imageUrl = realm.objects(BookData.self)[indexPath.row].photoUrl {
             let url = URL(string: imageUrl)
-            cell.bookImageView?.kf.setImage(with: url)
+            cell.bookImageView.kf.setImage(with: url)
         }
-        cell.nameLabel = UILabel()
-        cell.pageLabel = UILabel()
-        cell.nameLabel?.text = realm.objects(BookData.self)[indexPath.row].name
-        cell.pageLabel?.text = "\(realm.objects(BookData.self)[indexPath.row].pageCurrent)/\(realm.objects(BookData.self)[indexPath.row].pageTotal)"
+        cell.nameLabel.text = realm.objects(BookData.self)[indexPath.row].name
+        cell.pageLabel.text = "\(realm.objects(BookData.self)[indexPath.row].pageCurrent)/\(realm.objects(BookData.self)[indexPath.row].pageTotal)"
         return cell
     }
     
