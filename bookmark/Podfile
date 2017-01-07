@@ -15,6 +15,7 @@ target 'bookmark' do
   pod 'RealmSwift'
   pod 'Alamofire'
   pod 'Kingfisher'
+  pod 'Toast-Swift'
   target 'bookmarkTests' do
     inherit! :search_paths
     # Pods for testing

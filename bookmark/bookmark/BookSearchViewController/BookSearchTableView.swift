@@ -11,6 +11,7 @@ import Alamofire
 import Kingfisher
 import Bulb
 import RealmSwift
+import Toast_Swift
 
 class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
@@ -50,6 +51,7 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
                 }
                 Bulb.bulbGlobal().fire(BookSavedSignal.signalDefault(), data: newbook)
             }
+            weakSelf?.makeToast("\(newbook.name)已加入阅读列表")
             return true
         }
     }
