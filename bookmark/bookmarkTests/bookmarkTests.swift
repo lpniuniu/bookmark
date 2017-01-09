@@ -20,17 +20,4 @@ class bookmarkTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testRealm() {
-        let book:BookData = BookData()
-        book.name = "网易一千零一夜"
-        book.photo = nil
-        book.pageCurrent = 0
-        book.pageTotal = 300
-        DataMaster.addBook(data: book)
-        
-        let books = DataMaster.getBooks()
-        print(books)
-    }
-    
 }

@@ -51,7 +51,7 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
                 }
                 Bulb.bulbGlobal().fire(BookSavedSignal.signalDefault(), data: newbook)
             }
-            weakSelf?.makeToast("\(newbook.name)已加入阅读列表")
+            (cell as! BookSearchCell).makeToast("\(newbook.name)已加入阅读列表")
             return true
         }
     }
