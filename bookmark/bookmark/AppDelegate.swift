@@ -16,7 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow()
-        window?.rootViewController = UINavigationController(rootViewController: BookListViewController())
+        
+        let tabVC = UITabBarController()
+        
+        let listVC = UINavigationController(rootViewController: BookListViewController())
+        listVC.tabBarItem.title = "书单"
+        let readshowVC = BookReadShowViewController()
+        readshowVC.tabBarItem.title = "阅历"
+        let meVC = BookMeViewController()
+        meVC.tabBarItem.title = "我"
+        
+        tabVC.viewControllers = [listVC, readshowVC, meVC]
+        
+        window?.rootViewController = tabVC
         window?.backgroundColor = UIColor.gray
         window?.makeKeyAndVisible()
         

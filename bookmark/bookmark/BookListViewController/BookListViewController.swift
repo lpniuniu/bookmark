@@ -99,7 +99,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
             maker.top.equalTo(view).offset(10)
             maker.left.equalTo(view).offset(10)
             maker.right.equalTo(view).offset(-10)
-            maker.bottom.equalTo(view)
+            maker.bottom.equalTo(bottomLayoutGuide.snp.top)
         }
         
         weak var weakSelf = self
@@ -108,7 +108,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
                 maker.top.equalTo((weakSelf?.view)!).offset(10)
                 maker.left.equalTo((weakSelf?.view)!).offset(10)
                 maker.right.equalTo((weakSelf?.view)!).offset(-40)
-                maker.bottom.equalTo((weakSelf?.view)!)
+                maker.bottom.equalTo((weakSelf?.bottomLayoutGuide.snp.top)!)
             }
             UIView.animate(withDuration: 0.3, animations: {
                 weakSelf?.bookListTable.layoutIfNeeded()
@@ -123,7 +123,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
                 maker.top.equalTo((weakSelf?.view)!).offset(10)
                 maker.left.equalTo((weakSelf?.view)!).offset(10)
                 maker.right.equalTo((weakSelf?.view)!).offset(-10)
-                maker.bottom.equalTo((weakSelf?.view)!)
+                maker.bottom.equalTo((weakSelf?.bottomLayoutGuide.snp.top)!)
             }
             UIView.animate(withDuration: 0.3, animations: {
                 
@@ -144,7 +144,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
             maker.top.equalTo(topLayoutGuide.snp.bottom)
             maker.right.equalTo(view)
             maker.width.equalTo(30)
-            maker.bottom.equalTo(view)
+            maker.bottom.equalTo(bottomLayoutGuide.snp.top)
         }
     }
 

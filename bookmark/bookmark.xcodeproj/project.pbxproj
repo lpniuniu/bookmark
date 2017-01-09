@@ -17,6 +17,8 @@
 		0B7C26461E1F31C10056A2F5 /* BookSearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C26451E1F31C10056A2F5 /* BookSearchTableView.swift */; };
 		0B7C264E1E1F8F9F0056A2F5 /* BookSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C264D1E1F8F9F0056A2F5 /* BookSearchCell.swift */; };
 		0BB6AAEB1E1E2F2800B064CB /* ArrowSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB6AAEA1E1E2F2800B064CB /* ArrowSlider.swift */; };
+		0BEACB4D1E238B9B00B7B5B4 /* BookReadShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEACB4C1E238B9B00B7B5B4 /* BookReadShowViewController.swift */; };
+		0BEACB4F1E238BAE00B7B5B4 /* BookMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEACB4E1E238BAE00B7B5B4 /* BookMeViewController.swift */; };
 		0BF6AB161DFFD47C00B72C99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */; };
 		0BF6AB1D1DFFD47C00B72C99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */; };
 		0BF6AB201DFFD47C00B72C99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF6AB1E1DFFD47C00B72C99 /* LaunchScreen.storyboard */; };
@@ -47,6 +49,8 @@
 		0B7C26451E1F31C10056A2F5 /* BookSearchTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookSearchTableView.swift; path = BookSearchViewController/BookSearchTableView.swift; sourceTree = "<group>"; };
 		0B7C264D1E1F8F9F0056A2F5 /* BookSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookSearchCell.swift; path = BookSearchViewController/BookSearchCell.swift; sourceTree = "<group>"; };
 		0BB6AAEA1E1E2F2800B064CB /* ArrowSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrowSlider.swift; path = third_party/ArrowSlider/ArrowSliderDemo/ArrowSliderDemo/ArrowSlider.swift; sourceTree = SOURCE_ROOT; };
+		0BEACB4C1E238B9B00B7B5B4 /* BookReadShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookReadShowViewController.swift; path = BookReadShowViewController/BookReadShowViewController.swift; sourceTree = "<group>"; };
+		0BEACB4E1E238BAE00B7B5B4 /* BookMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookMeViewController.swift; path = BookMeViewController/BookMeViewController.swift; sourceTree = "<group>"; };
 		0BF6AB121DFFD47C00B72C99 /* bookmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -120,6 +124,22 @@
 			name = third_party;
 			sourceTree = "<group>";
 		};
+		0BEACB4A1E238B4000B7B5B4 /* BookReadShowViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0BEACB4C1E238B9B00B7B5B4 /* BookReadShowViewController.swift */,
+			);
+			name = BookReadShowViewController;
+			sourceTree = "<group>";
+		};
+		0BEACB4B1E238B5100B7B5B4 /* BookMeViewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				0BEACB4E1E238BAE00B7B5B4 /* BookMeViewController.swift */,
+			);
+			name = BookMeViewcontroller;
+			sourceTree = "<group>";
+		};
 		0BF6AB091DFFD47C00B72C99 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +168,8 @@
 				0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */,
 				0B60F6BC1E1399F500FDA393 /* BookListViewController */,
 				0B7C26421E1F2F340056A2F5 /* BookSearchViewController */,
+				0BEACB4A1E238B4000B7B5B4 /* BookReadShowViewController */,
+				0BEACB4B1E238B5100B7B5B4 /* BookMeViewcontroller */,
 				0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */,
 				0BF6AB1E1DFFD47C00B72C99 /* LaunchScreen.storyboard */,
 				0BF6AB211DFFD47C00B72C99 /* Info.plist */,
@@ -394,8 +416,10 @@
 				0B60F6C41E139A3100FDA393 /* BookCell.swift in Sources */,
 				0BB6AAEB1E1E2F2800B064CB /* ArrowSlider.swift in Sources */,
 				0B60F6C31E139A3100FDA393 /* BookListTableView.swift in Sources */,
+				0BEACB4F1E238BAE00B7B5B4 /* BookMeViewController.swift in Sources */,
 				0B7C264E1E1F8F9F0056A2F5 /* BookSearchCell.swift in Sources */,
 				0B60F6691E111C2800FDA393 /* BookData.swift in Sources */,
+				0BEACB4D1E238B9B00B7B5B4 /* BookReadShowViewController.swift in Sources */,
 				0B60F6C51E139A3100FDA393 /* BookSlider.swift in Sources */,
 				0BF6AB161DFFD47C00B72C99 /* AppDelegate.swift in Sources */,
 				0B60F6C61E139A3100FDA393 /* BookListViewController.swift in Sources */,
