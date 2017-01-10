@@ -16,6 +16,7 @@ target 'bookmark' do
   pod 'Alamofire'
   pod 'Kingfisher'
   pod 'Toast-Swift'
+  pod 'JTAppleCalendar'
   target 'bookmarkTests' do
     inherit! :search_paths
     # Pods for testing
