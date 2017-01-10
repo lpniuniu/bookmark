@@ -32,6 +32,8 @@ class BookReadShowViewController: UIViewController {
     let enabledColor = UIColor.blue
     let dateCellSize: CGFloat? = nil
     
+    var selectDates:[Date] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,20 +52,23 @@ class BookReadShowViewController: UIViewController {
                 return
             }
             Bulb.bulbGlobal().fire(BookCalendarChangeMonthSignal.signalDefault(), data: startDate)
-            
-            let realm = try! Realm()
-            
-            let results = realm.objects(BookReadDateData.self)
-            guard results.count > 0 else {
-                return
-            }
-            
-            var dates:[Date] = []
-            for readDate:BookReadDateData in results {
-                dates.append(readDate.date!)
-            }
-            self.calendarView.selectDates(dates)
         }
+    }
+    
+    func reloadSelectDates() {
+        let realm = try! Realm()
+        let result = realm.objects(BookReadDateData.self)
+        self.selectDates.removeAll()
+        for data:BookReadDateData in result {
+            self.selectDates.append(data.date!)
+        }
+        self.calendarView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.reloadSelectDates()
     }
 
     override func didReceiveMemoryWarning() {
@@ -113,6 +118,12 @@ extension BookReadShowViewController: JTAppleCalendarViewDelegate, JTAppleCalend
             cell.dayLabel.textColor = UIColor.black
         } else {
             cell.dayLabel.textColor = UIColor.lightGray
+        }
+        
+        if selectDates.contains(cellState.date.zeroOfDate) {
+            cell.backgroundColor = UIColor.orange
+        } else {
+            cell.backgroundColor = UIColor.white
         }
     }
     

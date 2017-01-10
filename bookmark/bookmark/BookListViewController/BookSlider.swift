@@ -20,25 +20,6 @@ class BookChangePageValue: BulbBoolSignal {
 class BookSlider: ArrowSlider {
     var bookData:BookData? = nil
     
-    var currentDayzeroOfDate:Date{
-        let calendar:Calendar = Calendar.current
-        let date = Date()
-        let year = calendar.component(.year, from: date)
-        let month = calendar.component(.month, from: date)
-        let day = calendar.component(.day, from: date)
-
-        var components:DateComponents = DateComponents()
-        
-        components.timeZone = NSTimeZone.local
-        components.year = year
-        components.month = month
-        components.day = day
-        components.hour = 8
-        components.minute = 0
-        components.second = 0
-        
-        return calendar.date(from: components)!
-    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -53,12 +34,14 @@ class BookSlider: ArrowSlider {
             })
             Bulb.bulbGlobal().fire(BookChangePageValue.signalDefault(), data: self.bookData!)
             
-            let result = realm.objects(BookReadDateData.self).filter("date == %@", self.currentDayzeroOfDate)
+            let now = Date()
+            
+            let result = realm.objects(BookReadDateData.self).filter("date == %@", now.zeroOfDate)
             guard result.count == 0 else {
                 return
             }
             let readDate = BookReadDateData()
-            readDate.date = self.currentDayzeroOfDate
+            readDate.date = now.zeroOfDate
             try! realm.write({
                 realm.add(readDate)
             })
