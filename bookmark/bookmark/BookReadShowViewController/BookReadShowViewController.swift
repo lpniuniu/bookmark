@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import JTAppleCalendar
 import Bulb
+import RealmSwift
 
 class BookCalendarChangeMonthSignal: BulbBoolSignal
 {
@@ -41,6 +42,7 @@ class BookReadShowViewController: UIViewController {
         calendarView.dataSource = self
         calendarView.cellInset = CGPoint(x: 0, y: 0)
         
+        calendarView.allowsMultipleSelection = true
         calendarView.registerCellViewClass(type: BookCalendarCellView.self)
         calendarView.registerHeaderView(classTypeNames: [BookCalendarHeadView.self])
         calendarView.visibleDates { (visibleDates: DateSegmentInfo) in
@@ -48,6 +50,19 @@ class BookReadShowViewController: UIViewController {
                 return
             }
             Bulb.bulbGlobal().fire(BookCalendarChangeMonthSignal.signalDefault(), data: startDate)
+            
+            let realm = try! Realm()
+            
+            let results = realm.objects(BookReadDateData.self)
+            guard results.count > 0 else {
+                return
+            }
+            
+            var dates:[Date] = []
+            for readDate:BookReadDateData in results {
+                dates.append(readDate.date!)
+            }
+            self.calendarView.selectDates(dates)
         }
     }
 
@@ -66,18 +81,6 @@ class BookReadShowViewController: UIViewController {
             maker.height.equalTo(500)
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 // MARK: JTAppleCalendarDelegate

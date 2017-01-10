@@ -21,6 +21,7 @@
 		0BEACB4F1E238BAE00B7B5B4 /* BookMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEACB4E1E238BAE00B7B5B4 /* BookMeViewController.swift */; };
 		0BEACB5D1E24CF9A00B7B5B4 /* BookCalendarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEACB5C1E24CF9A00B7B5B4 /* BookCalendarCellView.swift */; };
 		0BEACB5F1E24D44100B7B5B4 /* BookCalendarHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEACB5E1E24D44100B7B5B4 /* BookCalendarHeadView.swift */; };
+		0BEACB611E25034A00B7B5B4 /* BookReadDateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEACB601E25034A00B7B5B4 /* BookReadDateData.swift */; };
 		0BF6AB161DFFD47C00B72C99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */; };
 		0BF6AB1D1DFFD47C00B72C99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */; };
 		0BF6AB201DFFD47C00B72C99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF6AB1E1DFFD47C00B72C99 /* LaunchScreen.storyboard */; };
@@ -55,6 +56,7 @@
 		0BEACB4E1E238BAE00B7B5B4 /* BookMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookMeViewController.swift; path = BookMeViewController/BookMeViewController.swift; sourceTree = "<group>"; };
 		0BEACB5C1E24CF9A00B7B5B4 /* BookCalendarCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookCalendarCellView.swift; path = BookReadShowViewController/BookCalendarCellView.swift; sourceTree = "<group>"; };
 		0BEACB5E1E24D44100B7B5B4 /* BookCalendarHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookCalendarHeadView.swift; path = BookReadShowViewController/BookCalendarHeadView.swift; sourceTree = "<group>"; };
+		0BEACB601E25034A00B7B5B4 /* BookReadDateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookReadDateData.swift; path = bookmark/data/BookReadDateData.swift; sourceTree = "<group>"; };
 		0BF6AB121DFFD47C00B72C99 /* bookmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				0B60F6681E111C2800FDA393 /* BookData.swift */,
+				0BEACB601E25034A00B7B5B4 /* BookReadDateData.swift */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BEACB611E25034A00B7B5B4 /* BookReadDateData.swift in Sources */,
 				0B7C26461E1F31C10056A2F5 /* BookSearchTableView.swift in Sources */,
 				0BEACB5F1E24D44100B7B5B4 /* BookCalendarHeadView.swift in Sources */,
 				0B60F6C81E139A3100FDA393 /* BookAddAlertView.swift in Sources */,
