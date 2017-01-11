@@ -58,8 +58,9 @@ class BookCalendarHeadView: JTAppleHeaderView {
         super.layoutSubviews()
         
         monthLabel.snp.makeConstraints { (maker:ConstraintMaker) in
-            maker.top.left.right.equalToSuperview()
-            maker.height.equalTo(50)
+            maker.top.equalToSuperview().offset(10)
+            maker.left.right.equalToSuperview()
+            maker.height.equalTo(15)
         }
         
         var preLabel:UILabel? = nil

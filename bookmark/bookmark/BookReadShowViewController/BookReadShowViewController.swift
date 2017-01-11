@@ -10,6 +10,7 @@ import SnapKit
 import JTAppleCalendar
 import Bulb
 import RealmSwift
+import BlocksKit
 
 class BookCalendarChangeMonthSignal: BulbBoolSignal
 {
@@ -23,7 +24,7 @@ class BookReadShowViewController: UIViewController {
     // config
     var numberOfRows = 6
     let formatter = DateFormatter()
-    var testCalendar = Calendar.current
+    var bookCalendar = Calendar.current
     var generateInDates: InDateCellGeneration = .forAllMonths
     var generateOutDates: OutDateCellGeneration = .tillEndOfGrid
     var hasStrictBoundaries = true
@@ -47,12 +48,9 @@ class BookReadShowViewController: UIViewController {
         calendarView.allowsMultipleSelection = true
         calendarView.registerCellViewClass(type: BookCalendarCellView.self)
         calendarView.registerHeaderView(classTypeNames: [BookCalendarHeadView.self])
-        calendarView.visibleDates { (visibleDates: DateSegmentInfo) in
-            guard let startDate = visibleDates.monthDates.first else {
-                return
-            }
-            Bulb.bulbGlobal().fire(BookCalendarChangeMonthSignal.signalDefault(), data: startDate)
-        }
+        calendarView.bk_(whenTapped: {
+            self.calendarView.scrollToDate(Date())
+        })
     }
     
     func reloadSelectDates() {
@@ -67,6 +65,8 @@ class BookReadShowViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        calendarView.scrollToDate(Date(), triggerScrollToDateDelegate: false, animateScroll: false)
         
         self.reloadSelectDates()
     }
@@ -83,7 +83,7 @@ class BookReadShowViewController: UIViewController {
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
             maker.top.equalTo(topLayoutGuide.snp.bottom)
-            maker.height.equalTo(500)
+            maker.height.equalTo(300)
         }
     }
 }
@@ -93,21 +93,20 @@ extension BookReadShowViewController: JTAppleCalendarViewDelegate, JTAppleCalend
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         
         formatter.dateFormat = "yyyy MM dd"
-        formatter.timeZone = testCalendar.timeZone
-        formatter.locale = testCalendar.locale
+        formatter.timeZone = bookCalendar.timeZone
+        formatter.locale = bookCalendar.locale
         
-        let startDate = Date()
+        let startDate = formatter.date(from: "2016 01 01")!
         let endDate = formatter.date(from: "2019 12 01")!
         
         let parameters = ConfigurationParameters(startDate: startDate,
                                                  endDate: endDate,
                                                  numberOfRows: numberOfRows,
-                                                 calendar: testCalendar,
+                                                 calendar: bookCalendar,
                                                  generateInDates: generateInDates,
                                                  generateOutDates: generateOutDates,
                                                  firstDayOfWeek: firstDayOfWeek,
                                                  hasStrictBoundaries: hasStrictBoundaries)
-        
         return parameters
     }
     
@@ -132,13 +131,10 @@ extension BookReadShowViewController: JTAppleCalendarViewDelegate, JTAppleCalend
     }
     
     func calendar(_ calendar: JTAppleCalendarView, willDisplaySectionHeader header: JTAppleHeaderView, range: (start: Date, end: Date), identifier: String) {
-
+        Bulb.bulbGlobal().fire(BookCalendarChangeMonthSignal.signalDefault(), data: range.start)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
-        guard let startDate = visibleDates.monthDates.first else {
-            return
-        }
-        Bulb.bulbGlobal().fire(BookCalendarChangeMonthSignal.signalDefault(), data: startDate)
+
     }
 }
