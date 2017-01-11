@@ -28,4 +28,25 @@ extension Date
         
         return calendar.date(from: components)!
     }
+    
+    var startMonthOfDate:Date{
+        let calendar:Calendar = Calendar.current
+        let date = self
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        var components:DateComponents = DateComponents()
+        components.year = year
+        components.month = month
+        components.hour = 8
+        return calendar.date(from: components)!
+    }
+    
+    var endMonthOfDate:Date{
+        let calendar:Calendar = Calendar.current
+        let components = NSDateComponents()
+        components.month = 1
+        components.day = -1
+        let endOfMonth = calendar.date(byAdding: components as DateComponents, to: startMonthOfDate)!
+        return endOfMonth
+    }
 }

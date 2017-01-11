@@ -35,6 +35,9 @@ class BookReadShowViewController: UIViewController {
     
     var selectDates:[Date] = []
     
+    let daysReadLabel:UILabel = UILabel()
+    let countsReadLabel:UILabel = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,6 +54,9 @@ class BookReadShowViewController: UIViewController {
         calendarView.bk_(whenTapped: {
             self.calendarView.scrollToDate(Date())
         })
+        
+        view.addSubview(daysReadLabel)
+        view.addSubview(countsReadLabel)
     }
     
     func reloadSelectDates() {
@@ -68,6 +74,9 @@ class BookReadShowViewController: UIViewController {
         
         calendarView.scrollToDate(Date(), triggerScrollToDateDelegate: false, animateScroll: false)
         
+        let realm = try! Realm()
+        daysReadLabel.text = "本月连续阅读天数\(realm.objects(BookReadDateData.self).filter("date >= %@", Date().startMonthOfDate).filter("date <= %@", Date().endMonthOfDate).count)"
+        countsReadLabel.text = "本月读完了\(realm.objects(BookReadDoneData.self).filter("doneDate >= %@", Date().startMonthOfDate).filter("doneDate <= %@", Date().endMonthOfDate).count)本书"
         self.reloadSelectDates()
     }
 
@@ -79,11 +88,25 @@ class BookReadShowViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        calendarView.snp.makeConstraints { (maker:ConstraintMaker) in
+        calendarView.snp.remakeConstraints { (maker:ConstraintMaker) in
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
             maker.top.equalTo(topLayoutGuide.snp.bottom)
             maker.height.equalTo(300)
+        }
+        
+        daysReadLabel.snp.remakeConstraints { (maker:ConstraintMaker) in
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.top.equalTo(calendarView.snp.bottom).offset(10)
+            maker.height.equalTo(30)
+        }
+        
+        countsReadLabel.snp.remakeConstraints { (maker:ConstraintMaker) in
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.top.equalTo(daysReadLabel.snp.bottom).offset(10)
+            maker.height.equalTo(30)
         }
     }
 }
