@@ -37,6 +37,9 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action:#selector(self.searchBook))
         installBookListTableView()
         installPageSlider()
+        
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        print("\(documentsPath)")
     }
     
     func searchBook() {

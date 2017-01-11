@@ -98,16 +98,31 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
     }
     
     func swipeableTableViewCell(_ cell: SWTableViewCell!, didTriggerRightUtilityButtonWith index: Int) {
-        let realm = try! Realm()
-        try! realm.write({
-            realm.delete(realm.objects(BookData.self)[(indexPath(for: cell)?.row)!])
-        })
-        deleteRows(at:[indexPath(for: cell)!], with: .fade)
-        Bulb.bulbGlobal().fire(BookListDidDeselectSignal.signalDefault(), data:nil)
+        if index == 0 {
+            let realm = try! Realm()
+            let bookData = realm.objects(BookData.self)[(indexPath(for: cell)?.row)!]
+            let bookDone:BookReadDoneData = BookReadDoneData()
+            bookDone.bookData = bookData
+            bookDone.doneDate = Date()
+            try! realm.write({
+                realm.add(bookDone)
+                realm.delete(bookData)
+            })
+            deleteRows(at:[indexPath(for: cell)!], with: .fade)
+            Bulb.bulbGlobal().fire(BookListDidDeselectSignal.signalDefault(), data:nil)
+        } else if index == 1 {
+            let realm = try! Realm()
+            try! realm.write({
+                realm.delete(realm.objects(BookData.self)[(indexPath(for: cell)?.row)!])
+            })
+            deleteRows(at:[indexPath(for: cell)!], with: .fade)
+            Bulb.bulbGlobal().fire(BookListDidDeselectSignal.signalDefault(), data:nil)
+        }
     }
     
     func rightButton() -> NSMutableArray {
         let buttons:NSMutableArray = []
+        buttons.sw_addUtilityButton(with: UIColor.gray, title: "阅完")
         buttons.sw_addUtilityButton(with: UIColor.red, title: "删除")
         return buttons
     }
