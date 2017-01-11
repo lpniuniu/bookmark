@@ -120,7 +120,7 @@ extension BookReadShowViewController: JTAppleCalendarViewDelegate, JTAppleCalend
         }
         
         if selectDates.contains(cellState.date.zeroOfDate) {
-            cell.backgroundColor = UIColor.orange
+            cell.backgroundColor = UIColor.greenSea()
         } else {
             cell.backgroundColor = UIColor.white
         }
