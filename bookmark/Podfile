@@ -17,6 +17,7 @@ target 'bookmark' do
   pod 'Kingfisher'
   pod 'Toast-Swift'
   pod 'JTAppleCalendar'
+  pod 'BTNavigationDropdownMenu', :git => 'https://github.com/PhamBaTho/BTNavigationDropdownMenu.git', :branch => 'swift-3.0'
   target 'bookmarkTests' do
     inherit! :search_paths
     # Pods for testing

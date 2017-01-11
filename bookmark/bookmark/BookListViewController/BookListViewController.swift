@@ -13,6 +13,7 @@ import Bulb
 import SCLAlertView
 import BlocksKit
 import RealmSwift
+import BTNavigationDropdownMenu
 
 // what she say
 class SystemSelectImageSignal: BulbBoolSignal {
@@ -26,6 +27,7 @@ class BookSavedSignal: BulbBoolSignal {
 class BookListViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let bookListTable:BookListTableView = BookListTableView()
+    let bookDoneListTable:BookDoneListTableView = BookDoneListTableView()
     let pageSlider:BookSlider = BookSlider()
     var alertView:BookAddAlertView?
     
@@ -37,9 +39,26 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action:#selector(self.searchBook))
         installBookListTableView()
         installPageSlider()
+        installPullDownMenu()
+        
+        installBookDoneListTableView()
         
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         print("\(documentsPath)")
+    }
+    
+    func installPullDownMenu() {
+        let items:[String] = ["阅中", "阅完"]
+        let menuView = BTNavigationDropdownMenu(title: items[0], items: items as [AnyObject])
+        self.navigationItem.titleView = menuView
+        menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
+            print("Did select item at index: \(indexPath)")
+            if indexPath == 0 {
+                self?.bookDoneListTable.isHidden = true
+            } else {
+                self?.bookDoneListTable.isHidden = false
+            }
+        }
     }
     
     func searchBook() {
@@ -134,6 +153,18 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
             })
             return true
         })
+    }
+    
+    func installBookDoneListTableView() {
+        bookDoneListTable.isHidden = true
+        bookDoneListTable.backgroundColor = UIColor.white
+        view.addSubview(bookDoneListTable)
+        bookDoneListTable.snp.makeConstraints { (maker:ConstraintMaker) in
+            maker.top.equalTo(view).offset(10)
+            maker.left.equalTo(view)
+            maker.right.equalTo(view)
+            maker.bottom.equalTo(bottomLayoutGuide.snp.top)
+        }
     }
     
     func installPageSlider() {
