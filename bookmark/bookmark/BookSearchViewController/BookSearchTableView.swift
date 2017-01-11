@@ -44,7 +44,7 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
             newbook.serverId = (book?.object(forKey: "id") as? String)!
             
             let realm = try! Realm()
-            let result = realm.objects(BookData.self).filter("serverId == '\(newbook.serverId)'")
+            let result = realm.objects(BookData.self).filter("done == false").filter("serverId == '\(newbook.serverId)'")
             if result.count == 0 {
                 try! realm.write {
                     realm.add(newbook)

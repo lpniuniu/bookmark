@@ -64,7 +64,7 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let realm = try! Realm()
-        return realm.objects(BookData.self).count
+        return realm.objects(BookData.self).filter("done == false").count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -86,34 +86,47 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         cell.delegate = self
         
         let realm = try! Realm()
-        if let imageData = realm.objects(BookData.self)[indexPath.row].photo {
+        if let imageData = realm.objects(BookData.self).filter("done == false")[indexPath.row].photo {
             cell.bookImageView.image = UIImage(data:imageData)
-        } else if let imageUrl = realm.objects(BookData.self)[indexPath.row].photoUrl {
+        } else if let imageUrl = realm.objects(BookData.self).filter("done == false")[indexPath.row].photoUrl {
             let url = URL(string: imageUrl)
             cell.bookImageView.kf.setImage(with: url)
         }
-        cell.nameLabel.text = realm.objects(BookData.self)[indexPath.row].name
-        cell.pageLabel.text = "\(realm.objects(BookData.self)[indexPath.row].pageCurrent)/\(realm.objects(BookData.self)[indexPath.row].pageTotal)"
+        cell.nameLabel.text = realm.objects(BookData.self).filter("done == false")[indexPath.row].name
+        cell.pageLabel.text = "\(realm.objects(BookData.self).filter("done == false")[indexPath.row].pageCurrent)/\(realm.objects(BookData.self).filter("done == false")[indexPath.row].pageTotal)"
         return cell
     }
     
     func swipeableTableViewCell(_ cell: SWTableViewCell!, didTriggerRightUtilityButtonWith index: Int) {
         if index == 0 {
             let realm = try! Realm()
-            let bookData = realm.objects(BookData.self)[(indexPath(for: cell)?.row)!]
+            let bookData = realm.objects(BookData.self).filter("done == false")[(indexPath(for: cell)?.row)!]
+            
             let bookDone:BookReadDoneData = BookReadDoneData()
             bookDone.bookData = bookData
             bookDone.doneDate = Date()
             try! realm.write({
+                bookData.done = true
                 realm.add(bookDone)
-                realm.delete(bookData)
             })
             deleteRows(at:[indexPath(for: cell)!], with: .fade)
             Bulb.bulbGlobal().fire(BookListDidDeselectSignal.signalDefault(), data:nil)
+            
+            // 加入日历
+            let now = Date()
+            let result = realm.objects(BookReadDateData.self).filter("date == %@", now.zeroOfDate)
+            guard result.count == 0 else {
+                return
+            }
+            let readDate = BookReadDateData()
+            readDate.date = now.zeroOfDate
+            try! realm.write({
+                realm.add(readDate)
+            })
         } else if index == 1 {
             let realm = try! Realm()
             try! realm.write({
-                realm.delete(realm.objects(BookData.self)[(indexPath(for: cell)?.row)!])
+                realm.delete(realm.objects(BookData.self).filter("done == false")[(indexPath(for: cell)?.row)!])
             })
             deleteRows(at:[indexPath(for: cell)!], with: .fade)
             Bulb.bulbGlobal().fire(BookListDidDeselectSignal.signalDefault(), data:nil)
@@ -130,12 +143,12 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectIndexPath = indexPath
         let realm = try! Realm()
-        Bulb.bulbGlobal().fire(BookListDidSelectSignal.signalDefault(), data: realm.objects(BookData.self)[indexPath.row])
+        Bulb.bulbGlobal().fire(BookListDidSelectSignal.signalDefault(), data: realm.objects(BookData.self).filter("done == false")[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         selectIndexPath = nil
         let realm = try! Realm()
-        Bulb.bulbGlobal().fire(BookListDidDeselectSignal.signalDefault(), data: realm.objects(BookData.self)[indexPath.row])
+        Bulb.bulbGlobal().fire(BookListDidDeselectSignal.signalDefault(), data: realm.objects(BookData.self).filter("done == false")[indexPath.row])
     }
 }

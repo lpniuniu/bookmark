@@ -16,4 +16,5 @@ class BookData: Object {
     dynamic var pageCurrent:Int = 0
     dynamic var pageTotal:Int = 0
     dynamic var serverId:String = ""
+    dynamic var done:Bool = false
 }

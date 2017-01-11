@@ -35,7 +35,6 @@ class BookSlider: ArrowSlider {
             Bulb.bulbGlobal().fire(BookChangePageValue.signalDefault(), data: self.bookData!)
             
             let now = Date()
-            
             let result = realm.objects(BookReadDateData.self).filter("date == %@", now.zeroOfDate)
             guard result.count == 0 else {
                 return

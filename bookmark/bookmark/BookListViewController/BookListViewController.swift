@@ -56,6 +56,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
             if indexPath == 0 {
                 self?.bookDoneListTable.isHidden = true
             } else {
+                self?.bookDoneListTable.reloadData()
                 self?.bookDoneListTable.isHidden = false
             }
         }
@@ -160,7 +161,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         bookDoneListTable.backgroundColor = UIColor.white
         view.addSubview(bookDoneListTable)
         bookDoneListTable.snp.makeConstraints { (maker:ConstraintMaker) in
-            maker.top.equalTo(view).offset(10)
+            maker.top.equalTo(topLayoutGuide.snp.bottom)
             maker.left.equalTo(view)
             maker.right.equalTo(view)
             maker.bottom.equalTo(bottomLayoutGuide.snp.top)
