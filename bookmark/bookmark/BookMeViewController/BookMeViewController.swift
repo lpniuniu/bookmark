@@ -7,18 +7,57 @@
 //
 
 import UIKit
+import Eureka
 
-class BookMeViewController: UIViewController {
+class BookMeViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = UIColor.white
         // Do any additional setup after loading the view.
+        form = Section("提醒")
+            <<< SwitchRow(){
+                $0.title = "鼓励提醒"
+                $0.value = true
+            }
+            <<< TimeRow(){
+                $0.title = "鼓励提醒时间"
+                let dateFormatter = DateFormatter()
+                let initialString = "21:00:00"
+                dateFormatter.dateFormat = "HH:mm:ss"
+                if let date = dateFormatter.date(from: initialString) {
+                    $0.value = date
+                }
+            }
+            <<< SwitchRow(){
+                $0.title = "督促提醒"
+                $0.value = true
+            }
+            <<< TimeRow(){
+                $0.title = "督促提醒时间"
+                let dateFormatter = DateFormatter()
+                let initialString = "21:00:00"
+                dateFormatter.dateFormat = "HH:mm:ss"
+                if let date = dateFormatter.date(from: initialString) {
+                    $0.value = date
+                }
+            }
+            +++ Section()
+            <<< ButtonRow(){
+                $0.title = "记时刷新"
+            }
+            +++ Section()
+            <<< ButtonRow(){
+                $0.title = "反馈"
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
+        
     }
     
 
