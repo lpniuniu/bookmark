@@ -14,6 +14,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        prepareRealm()
+        
+        return true
+    }
+    
+    func prepareRealm() {
+        var config = Realm.Configuration.defaultConfiguration
+        config.schemaVersion = 1
+        Realm.Configuration.defaultConfiguration = config
+        
+        let realm = try! Realm()
+        if realm.objects(BookSettingData.self).count == 0 {
+            let encourage_switch_data = BookSettingData()
+            encourage_switch_data.key = "encourage_switch"
+            encourage_switch_data.value = "1"
+            try! realm.write({
+                realm.add(encourage_switch_data)
+            })
+            let encourage_time_data = BookSettingData()
+            encourage_time_data.key = "encourage_time"
+            encourage_time_data.value = "21:00"
+            try! realm.write({
+                realm.add(encourage_time_data)
+            })
+            let urge_switch_data = BookSettingData()
+            urge_switch_data.key = "urge_switch"
+            urge_switch_data.value = "1"
+            try! realm.write({
+                realm.add(urge_switch_data)
+            })
+            let urge_time_data = BookSettingData()
+            urge_time_data.key = "urge_time"
+            urge_time_data.value = "21:00"
+            try! realm.write({
+                realm.add(urge_time_data)
+            })
+        }
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow()
         
@@ -32,10 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.gray
         window?.makeKeyAndVisible()
         
-        var config = Realm.Configuration.defaultConfiguration
-        config.schemaVersion = 1
-        Realm.Configuration.defaultConfiguration = config
-    
         return true
     }
 
