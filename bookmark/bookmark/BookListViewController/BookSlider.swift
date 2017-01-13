@@ -46,7 +46,7 @@ class BookSlider: ArrowSlider {
             })
         }
         
-        Bulb.bulbGlobal().register(BookListDidSelectSignal.signalDefault(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
+        Bulb.bulbGlobal().register(BookListDidSelectSignal.signalDefault(), block: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
 
             weakSelf?.showSlider()
             weakSelf?.bookData = firstData as? BookData
@@ -55,7 +55,7 @@ class BookSlider: ArrowSlider {
             return true
         })
         
-        Bulb.bulbGlobal().register(BookListDidDeselectSignal.signalDefault(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
+        Bulb.bulbGlobal().register(BookListDidDeselectSignal.signalDefault(), block: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
             weakSelf?.hideSlider()
             return true
         })

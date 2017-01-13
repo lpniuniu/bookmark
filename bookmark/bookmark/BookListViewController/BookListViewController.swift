@@ -73,10 +73,11 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
             picker.allowsEditing = true
             picker.delegate = self
             self.alertView?.present(picker, animated: true, completion: {
-                Bulb.bulbGlobal().register(SystemSelectImageSignal.signalDefault().pickOffFromHungUp(), block: { (firstData:Any?, identifier2Signal:[String : BulbSignal]?) in
+                Bulb.bulbGlobal().register(SystemSelectImageSignal.signalDefault().pickOffFromHungUp(), block: { (firstData:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
                     let image:UIImage? = firstData as? UIImage
                     let imageView:UIImageView? = self.alertView?.circleIconView as? UIImageView
                     imageView?.image = image
+                    return false
                 })
             })
         })
@@ -126,7 +127,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         
         weak var weakSelf = self
-        Bulb.bulbGlobal().register(BookListDidSelectSignal.signalDefault(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
+        Bulb.bulbGlobal().register(BookListDidSelectSignal.signalDefault(), block: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
             weakSelf?.bookListTable.snp.remakeConstraints { (maker:ConstraintMaker) in
                 maker.top.equalTo((weakSelf?.view)!).offset(10)
                 maker.left.equalTo((weakSelf?.view)!).offset(10)
@@ -140,7 +141,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
             return true
         })
         
-        Bulb.bulbGlobal().register(BookListDidDeselectSignal.signalDefault(), foreverblock: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
+        Bulb.bulbGlobal().register(BookListDidDeselectSignal.signalDefault(), block: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
             
             weakSelf?.bookListTable.snp.remakeConstraints { (maker:ConstraintMaker) in
                 maker.top.equalTo((weakSelf?.view)!).offset(10)
