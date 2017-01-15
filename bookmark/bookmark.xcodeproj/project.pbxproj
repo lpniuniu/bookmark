@@ -32,6 +32,7 @@
 		0BF6AB2B1DFFD47C00B72C99 /* bookmarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF6AB2A1DFFD47C00B72C99 /* bookmarkTests.swift */; };
 		8CF417632DFDB9FB69BEAB3A /* Pods_bookmarkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B8921AEEE3C610574BEDBD /* Pods_bookmarkTests.framework */; };
 		A24AEB161E62FCF445A7DE32 /* Pods_bookmark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2284B64C52341F0B8A05A82D /* Pods_bookmark.framework */; };
+		E3D0E9291E2B93B2003D1D5E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3D0E9281E2B93B2003D1D5E /* UserNotifications.framework */; };
 		E3EEEDC71E253D090002F772 /* Date+Zero.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EEEDC61E253D090002F772 /* Date+Zero.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		68EFF4CB35A05215C7321315 /* Pods-bookmarkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bookmarkTests/Pods-bookmarkTests.release.xcconfig"; sourceTree = "<group>"; };
 		73117A30AA8BFAFF92233EC8 /* Pods-bookmark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bookmark/Pods-bookmark.debug.xcconfig"; sourceTree = "<group>"; };
 		95B8921AEEE3C610574BEDBD /* Pods_bookmarkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookmarkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3D0E9281E2B93B2003D1D5E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		E3EEEDC61E253D090002F772 /* Date+Zero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Zero.swift"; path = "bookmark/Util/Date+Zero.swift"; sourceTree = "<group>"; };
 		EB3D22468C03DF17FA11E216 /* Pods-bookmarkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bookmarkTests/Pods-bookmarkTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3D0E9291E2B93B2003D1D5E /* UserNotifications.framework in Frameworks */,
 				A24AEB161E62FCF445A7DE32 /* Pods_bookmark.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +235,7 @@
 		F882580F9F46E9AA3616EFA6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E3D0E9281E2B93B2003D1D5E /* UserNotifications.framework */,
 				2284B64C52341F0B8A05A82D /* Pods_bookmark.framework */,
 				95B8921AEEE3C610574BEDBD /* Pods_bookmarkTests.framework */,
 			);

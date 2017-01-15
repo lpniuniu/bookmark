@@ -9,9 +9,12 @@
 import UIKit
 import Eureka
 import RealmSwift
+import UserNotifications
 
 class BookMeViewController: FormViewController {
 
+    var notiAuth = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,10 +26,16 @@ class BookMeViewController: FormViewController {
         }
         view.backgroundColor = UIColor.white
 
+        notiAuth = (UIApplication.shared.delegate as! AppDelegate).authNoti
+        
         form = Section("提醒")
             <<< SwitchRow(){
                 $0.title = "鼓励提醒"
-                $0.value = dict["encourage_switch"]!.value == "1"
+                if notiAuth == false {
+                    $0.value = false
+                } else {
+                    $0.value = dict["encourage_switch"]!.value == "1"
+                }
                 }.onChange({ (row:SwitchRow) in
                 
                 let realm = try! Realm()
@@ -34,6 +43,10 @@ class BookMeViewController: FormViewController {
                     if row.value == false {
                         dict["encourage_switch"]!.value = "0"
                     } else {
+                        if self.notiAuth == false {
+                            UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)! , options: [:], completionHandler: nil)
+                            self.notiAuth = true
+                        }
                         dict["encourage_switch"]!.value = "1"
                     }
                 }
@@ -43,9 +56,6 @@ class BookMeViewController: FormViewController {
                 let dateFormatter = DateFormatter()
                 let initialString = dict["encourage_time"]!.value!
                 dateFormatter.dateFormat = "HH:mm"
-                
-                
-                
                 if let date = dateFormatter.date(from: initialString) {
                     $0.value = date
                 }
@@ -60,7 +70,11 @@ class BookMeViewController: FormViewController {
             })
             <<< SwitchRow(){
                 $0.title = "督促提醒"
-                $0.value = dict["urge_switch"]!.value == "1"
+                if notiAuth == false {
+                    $0.value = false
+                } else {
+                    $0.value = dict["urge_switch"]!.value == "1"
+                }
                 }.onChange({ (row:SwitchRow) in
                 
                 let realm = try! Realm()
@@ -68,6 +82,10 @@ class BookMeViewController: FormViewController {
                     if row.value == false {
                         dict["urge_switch"]!.value = "0"
                     } else {
+                        if self.notiAuth == false {
+                            UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)! , options: [:], completionHandler: nil)
+                            self.notiAuth = true
+                        }
                         dict["urge_switch"]!.value = "1"
                     }
                 }
@@ -96,6 +114,19 @@ class BookMeViewController: FormViewController {
             +++ Section()
             <<< ButtonRow(){
                 $0.title = "反馈"
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let un = UNUserNotificationCenter.current()
+        un.getNotificationSettings { (settings:UNNotificationSettings) in
+            if settings.authorizationStatus != .authorized {
+                self.notiAuth = false
+            } else {
+                self.notiAuth = true
+            }
         }
     }
 
