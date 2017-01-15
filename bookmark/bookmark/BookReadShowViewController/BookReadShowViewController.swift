@@ -75,7 +75,7 @@ class BookReadShowViewController: UIViewController {
         calendarView.scrollToDate(Date(), triggerScrollToDateDelegate: false, animateScroll: false)
         
         let realm = try! Realm()
-        daysReadLabel.text = "本月连续阅读天数\(realm.objects(BookReadDateData.self).filter("date >= %@", Date().startMonthOfDate).filter("date <= %@", Date().endMonthOfDate).count)"
+        daysReadLabel.text = "本月阅读天数\(realm.objects(BookReadDateData.self).filter("date >= %@", Date().startMonthOfDate).filter("date <= %@", Date().endMonthOfDate).count)"
         countsReadLabel.text = "本月读完了\(realm.objects(BookReadDoneData.self).filter("doneDate >= %@", Date().startMonthOfDate).filter("doneDate <= %@", Date().endMonthOfDate).count)本书"
         self.reloadSelectDates()
     }

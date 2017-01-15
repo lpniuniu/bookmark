@@ -17,39 +17,78 @@ class BookMeViewController: FormViewController {
 
         let realm = try! Realm()
         let results = realm.objects(BookSettingData.self);
-        var dict = [String:String]()
+        var dict = [String:BookSettingData]()
         for result in results {
-            dict[result.key!] = result.value!
+            dict[result.key!] = result
         }
         view.backgroundColor = UIColor.white
-        // Do any additional setup after loading the view.
+
         form = Section("提醒")
             <<< SwitchRow(){
                 $0.title = "鼓励提醒"
-                $0.value = dict["encourage_switch"]! == "1"
-            }
+                $0.value = dict["encourage_switch"]!.value == "1"
+                }.onChange({ (row:SwitchRow) in
+                
+                let realm = try! Realm()
+                try! realm.write {
+                    if row.value == false {
+                        dict["encourage_switch"]!.value = "0"
+                    } else {
+                        dict["encourage_switch"]!.value = "1"
+                    }
+                }
+            })
             <<< TimeRow(){
                 $0.title = "鼓励提醒时间"
                 let dateFormatter = DateFormatter()
-                let initialString = dict["encourage_time"]!
+                let initialString = dict["encourage_time"]!.value!
                 dateFormatter.dateFormat = "HH:mm"
+                
+                
+                
                 if let date = dateFormatter.date(from: initialString) {
                     $0.value = date
                 }
-            }
+                }.onChange({ (row:TimeRow) in
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "HH:mm"
+                    let dateString = dateFormatter.string(from: row.value!)
+                    let realm = try! Realm()
+                    try! realm.write {
+                        dict["encourage_time"]!.value = dateString
+                    }
+            })
             <<< SwitchRow(){
                 $0.title = "督促提醒"
-                $0.value = dict["urge_switch"]! == "1"
-            }
+                $0.value = dict["urge_switch"]!.value == "1"
+                }.onChange({ (row:SwitchRow) in
+                
+                let realm = try! Realm()
+                try! realm.write {
+                    if row.value == false {
+                        dict["urge_switch"]!.value = "0"
+                    } else {
+                        dict["urge_switch"]!.value = "1"
+                    }
+                }
+            })
             <<< TimeRow(){
                 $0.title = "督促提醒时间"
                 let dateFormatter = DateFormatter()
-                let initialString = dict["urge_time"]!
+                let initialString = dict["urge_time"]!.value!
                 dateFormatter.dateFormat = "HH:mm"
                 if let date = dateFormatter.date(from: initialString) {
                     $0.value = date
                 }
-            }
+                }.onChange({ (row:TimeRow) in
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "HH:mm"
+                    let dateString = dateFormatter.string(from: row.value!)
+                    let realm = try! Realm()
+                    try! realm.write {
+                        dict["urge_time"]!.value = dateString
+                    }
+            })
             +++ Section()
             <<< ButtonRow(){
                 $0.title = "记时刷新"
