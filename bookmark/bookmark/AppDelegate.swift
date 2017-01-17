@@ -8,26 +8,16 @@
 
 import UIKit
 import RealmSwift
-import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var authNoti:Bool = true
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         
         prepareRealm()
         
-        UIApplication.shared.registerForRemoteNotifications()
-
-        let un = UNUserNotificationCenter.current()
-        un.getNotificationSettings { (settings:UNNotificationSettings) in
-            if settings.authorizationStatus != .authorized {
-                self.authNoti = false
-            }
-        }
         return true
     }
     
@@ -82,6 +72,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = tabVC
         window?.backgroundColor = UIColor.gray
         window?.makeKeyAndVisible()
+        
+        NotificationManager.registerNotification()
         
         return true
     }

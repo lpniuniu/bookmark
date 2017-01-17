@@ -10,6 +10,7 @@ import UIKit
 import Eureka
 import RealmSwift
 import UserNotifications
+import Bulb
 
 class BookMeViewController: FormViewController {
 
@@ -26,8 +27,8 @@ class BookMeViewController: FormViewController {
         }
         view.backgroundColor = UIColor.white
 
-        notiAuth = (UIApplication.shared.delegate as! AppDelegate).authNoti
-        
+        let signal:BulbBoolSignal? = Bulb.bulbGlobal().getSignalFromHungUpList(AuthNotiSignal.identifier()) as? BulbBoolSignal
+        notiAuth =  signal != nil && signal!.isOn()
         form = Section("提醒")
             <<< SwitchRow(){
                 $0.title = "鼓励提醒"
@@ -107,10 +108,6 @@ class BookMeViewController: FormViewController {
                         dict["urge_time"]!.value = dateString
                     }
             })
-            +++ Section()
-            <<< ButtonRow(){
-                $0.title = "记时刷新"
-            }
             +++ Section()
             <<< ButtonRow(){
                 $0.title = "反馈"
