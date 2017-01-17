@@ -109,9 +109,6 @@ class BookMeViewController: FormViewController {
                     }
             })
             +++ Section()
-            <<< ButtonRow(){
-                $0.title = "反馈"
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
