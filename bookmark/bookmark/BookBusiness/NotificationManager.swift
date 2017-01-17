@@ -86,7 +86,7 @@ class NotificationManager {
         
         let content = UNMutableNotificationContent()
         content.title = "恭喜您"
-        content.body = "您已经连续阅读\(continuousRead)了，再接再厉"
+        content.body = "您已经保持连续阅读\(continuousRead)天，再接再厉"
         content.sound = UNNotificationSound.default()
         
         let realm = try! Realm()
@@ -122,7 +122,7 @@ class NotificationManager {
         
         let content = UNMutableNotificationContent()
         content.title = "最近怎么了"
-        content.body = "您已经连续\(continuousUnRead)没有阅读了, 赶快拿出书本"
+        content.body = "您已经连续\(continuousUnRead)天没有阅读了, 赶快拿起书本"
         content.sound = UNNotificationSound.default()
         
         let realm = try! Realm()
