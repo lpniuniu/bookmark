@@ -8,18 +8,13 @@
 
 import UIKit
 import RealmSwift
+import Crashlytics
+import Fabric
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        
-        prepareRealm()
-        
-        return true
-    }
     
     func prepareRealm() {
         var config = Realm.Configuration.defaultConfiguration
@@ -56,6 +51,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        Fabric.sharedSDK().debug = true
+        Fabric.with([Crashlytics.self])
+        
+        prepareRealm()
+        
         window = UIWindow()
         
         let tabVC = UITabBarController()
