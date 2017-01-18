@@ -28,6 +28,7 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
         register(BookSearchCell.self, forCellReuseIdentifier: cellIdentifier)
         
         searchBar.delegate = self
+        searchBar.placeholder = "输入要检索的书名"
         tableHeaderView = searchBar
         
         weak var weakSelf = self
