@@ -30,6 +30,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
     let bookDoneListTable:BookDoneListTableView = BookDoneListTableView()
     let pageSlider:BookSlider = BookSlider()
     var alertView:BookAddAlertView?
+    let cameraIcon = UIImage(named: "camera")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +67,18 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         self.navigationController?.pushViewController(BookSearchViewController(), animated: true)
     }
     
+    func changeAlertViewCircleIconView() {
+        Bulb.bulbGlobal().register(SystemSelectImageSignal.signalDefault().pickOffFromHungUp(), block: { (firstData:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
+            guard firstData != nil else {
+                return false
+            }
+            let image:UIImage? = firstData as? UIImage
+            let imageView:UIImageView? = self.alertView?.circleIconView as? UIImageView
+            imageView?.image = image
+            return false
+        })
+    }
+    
     func photoActionSheet() {
         let optionMenu = UIAlertController(title: nil, message: "拍照或选择书的封面", preferredStyle: .actionSheet)
         let taskPhotoAction = UIAlertAction(title: "拍照", style: .default, handler: {
@@ -75,14 +88,8 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
             picker.sourceType = .camera
             picker.delegate = self
             self.alertView?.present(picker, animated: true, completion: {
-                Bulb.bulbGlobal().register(SystemSelectImageSignal.signalDefault().pickOffFromHungUp(), block: { (firstData:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
-                    let image:UIImage? = firstData as? UIImage
-                    let imageView:UIImageView? = self.alertView?.circleIconView as? UIImageView
-                    imageView?.image = image
-                    return false
-                })
+                self.changeAlertViewCircleIconView()
             })
-
         })
         let photoLibAction = UIAlertAction(title: "照片库", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
@@ -90,12 +97,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
             picker.allowsEditing = true
             picker.delegate = self
             self.alertView?.present(picker, animated: true, completion: {
-                Bulb.bulbGlobal().register(SystemSelectImageSignal.signalDefault().pickOffFromHungUp(), block: { (firstData:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
-                    let image:UIImage? = firstData as? UIImage
-                    let imageView:UIImageView? = self.alertView?.circleIconView as? UIImageView
-                    imageView?.image = image
-                    return false
-                })
+                self.changeAlertViewCircleIconView()
             })
         })
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: {
@@ -111,6 +113,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func addBook() {
         alertView = BookAddAlertView()
+        
         alertView?.circleView.bk_(whenTapped: {
             self.photoActionSheet()
         })
@@ -125,8 +128,12 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
             let book = BookData()
             book.name = (bookNameTextField?.text)!
             book.pageTotal = Int((pageTextField?.text)!)!
-            if ((imageView?.image) != nil) {
+            if ((imageView?.image) != nil && (imageView?.image) != self.cameraIcon) {
                 let data:Data? = UIImagePNGRepresentation((imageView?.image!)!) as Data?
+                book.photo = data
+            } else {
+                let default_img = UIImage(named: "book_default")!
+                let data:Data? = UIImagePNGRepresentation(default_img) as Data?
                 book.photo = data
             }
             let realm = try! Realm()
@@ -136,6 +143,9 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
             Bulb.bulbGlobal().fire(BookSavedSignal.signalDefault(), data: book)
         })
         alertView?.showCustom("请输入书名和页数", subTitle: "", color: UIColor.greenSea(), icon: UIImage())
+        
+        let imageView:UIImageView? = self.alertView?.circleIconView as? UIImageView
+        imageView?.image = cameraIcon
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
