@@ -31,7 +31,7 @@ class BookMeViewController: FormViewController {
         notiAuth =  signal != nil && signal!.isOn()
         form = Section("提醒")
             <<< SwitchRow(){
-                $0.title = "鼓励提醒"
+                $0.title = "鼓励提醒(连续阅读3天)"
                 if notiAuth == false {
                     $0.value = false
                 } else {
@@ -70,7 +70,7 @@ class BookMeViewController: FormViewController {
                     }
             })
             <<< SwitchRow(){
-                $0.title = "督促提醒"
+                $0.title = "督促提醒(两天没有阅读)"
                 if notiAuth == false {
                     $0.value = false
                 } else {
