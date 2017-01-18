@@ -66,9 +66,26 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         self.navigationController?.pushViewController(BookSearchViewController(), animated: true)
     }
     
-    func addBook() {
-        alertView = BookAddAlertView()
-        alertView?.circleView.bk_(whenTapped: {
+    func photoActionSheet() {
+        let optionMenu = UIAlertController(title: nil, message: "拍照或选择书的封面", preferredStyle: .actionSheet)
+        let taskPhotoAction = UIAlertAction(title: "拍照", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            let picker = UIImagePickerController()
+            picker.allowsEditing = true
+            picker.sourceType = .camera
+            picker.delegate = self
+            self.alertView?.present(picker, animated: true, completion: {
+                Bulb.bulbGlobal().register(SystemSelectImageSignal.signalDefault().pickOffFromHungUp(), block: { (firstData:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
+                    let image:UIImage? = firstData as? UIImage
+                    let imageView:UIImageView? = self.alertView?.circleIconView as? UIImageView
+                    imageView?.image = image
+                    return false
+                })
+            })
+
+        })
+        let photoLibAction = UIAlertAction(title: "照片库", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
             let picker = UIImagePickerController()
             picker.allowsEditing = true
             picker.delegate = self
@@ -80,6 +97,22 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
                     return false
                 })
             })
+        })
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+        })
+        optionMenu.addAction(taskPhotoAction)
+        optionMenu.addAction(photoLibAction)
+        optionMenu.addAction(cancelAction)
+        
+        alertView?.present(optionMenu, animated: true, completion: nil)
+    }
+    
+    func addBook() {
+        alertView = BookAddAlertView()
+        alertView?.circleView.bk_(whenTapped: {
+            self.photoActionSheet()
         })
         alertView?.closeView.bk_(whenTapped: { 
             self.alertView?.hideView()
