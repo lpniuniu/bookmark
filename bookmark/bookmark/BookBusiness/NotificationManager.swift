@@ -72,15 +72,19 @@ class NotificationManager {
         return count
     }
     
+    private class func hasReadData() -> Bool {
+        let realm = try! Realm()
+        return realm.objects(BookReadDateData.self).count > 0
+    }
+    
     class func sendEncourageNoti() {
-        
         let identifier = "BookSendEncourageNotiIdentifier"
         let un = UNUserNotificationCenter.current()
         un.removePendingNotificationRequests(withIdentifiers: [identifier])
         
-        // 连续阅读小于三天，不做鼓励提醒
+        // 连续阅读小于三天，不做鼓励提醒, 无阅读数据不做提醒
         let continuousRead =  self.calcContinuousRead()
-        if continuousRead < 3 {
+        if continuousRead < 3 || hasReadData() == false {
             return
         }
         
@@ -114,9 +118,9 @@ class NotificationManager {
         let un = UNUserNotificationCenter.current()
         un.removePendingNotificationRequests(withIdentifiers: [identifier])
         
-        // 连续不阅读小于二天，不做鼓励提醒
+        // 连续不阅读小于二天，不做鼓励提醒, 无阅读数据不做提醒
         let continuousUnRead =  self.calcContinuousUnRead()
-        if continuousUnRead < 2 {
+        if continuousUnRead < 2 || hasReadData() == false {
             return
         }
         
