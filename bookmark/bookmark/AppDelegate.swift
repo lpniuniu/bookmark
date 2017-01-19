@@ -66,11 +66,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let listVC = UINavigationController(rootViewController: BookListViewController())
         listVC.tabBarItem.title = "书单"
+        listVC.tabBarItem.image = UIImage(named: "book_1")
         let readshowVC = BookReadShowViewController()
         readshowVC.tabBarItem.title = "阅历"
+        readshowVC.tabBarItem.image = UIImage(named: "book_2")
         let meVC = BookMeViewController()
         meVC.tabBarItem.title = "我"
-        
+        meVC.tabBarItem.image = UIImage(named: "me")
         tabVC.viewControllers = [listVC, readshowVC, meVC]
         
         window?.rootViewController = tabVC
