@@ -78,7 +78,7 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:BookCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! BookCell
-        cell.configureFlatCell(with: UIColor.clouds(), selectedColor: UIColor.greenSea(), roundingCorners:.allCorners)
+        cell.configureFlatCell(with: UIColor.white, selectedColor: UIColor.greenSea(), roundingCorners:.allCorners)
         cell.cornerRadius = 5.0
         cell.separatorHeight = 20.0
         cell.backgroundColor = backgroundColor
@@ -135,7 +135,7 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
     
     func rightButton() -> NSMutableArray {
         let buttons:NSMutableArray = []
-        buttons.sw_addUtilityButton(with: UIColor.gray, title: "阅完")
+        buttons.sw_addUtilityButton(with: UIColor.turquoise(), title: "阅完")
         buttons.sw_addUtilityButton(with: UIColor.red, title: "删除")
         return buttons
     }

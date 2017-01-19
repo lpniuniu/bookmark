@@ -35,7 +35,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.clouds()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(self.addBook))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action:#selector(self.searchBook))
         
@@ -56,6 +56,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         let items:[String] = ["阅中", "阅完"]
         let menuView = BTNavigationDropdownMenu(title: items[0], items: items as [AnyObject])
         self.navigationItem.titleView = menuView
+        menuView.arrowTintColor = UIColor.greenSea()
         menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
             if indexPath == 0 {
@@ -220,7 +221,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         view.addSubview(pageSlider)
         pageSlider.selectedColor = UIColor.silver()
         pageSlider.chunk.themeColor = UIColor.greenSea()
-        pageSlider.unselectColor = UIColor.black
+        pageSlider.unselectColor = UIColor.gray
         pageSlider.hideSlider()
         pageSlider.backgroundColor = UIColor.clouds()
         pageSlider.snp.makeConstraints { (maker:ConstraintMaker) in
