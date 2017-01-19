@@ -57,6 +57,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         prepareRealm()
         
+        UINavigationBar.appearance().backgroundColor = UIColor.white
+        UIBarButtonItem.appearance().tintColor = UIColor.black
+        
         window = UIWindow()
         
         let tabVC = UITabBarController()
