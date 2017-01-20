@@ -11,15 +11,39 @@ import JTAppleCalendar
 import Bulb
 import RealmSwift
 import BlocksKit
+import Charts
 
 class BookCalendarChangeMonthSignal: BulbBoolSignal
 {
     
 }
 
+class ItemAxisValueFormatter : NSObject, IAxisValueFormatter {
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        switch value {
+        case 0:
+            return "本月阅读天数"
+        case 1:
+            return "本月连续阅读天数"
+        case 2:
+            return "本书读书本数"
+        default:
+            return ""
+        }
+    }
+}
+
+class ValueAxisValueFormatter : NSObject, IValueFormatter {
+    
+    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+        return "\(Int(value))"
+    }
+}
+
 class BookReadShowViewController: UIViewController {
 
     let calendarView:JTAppleCalendarView = JTAppleCalendarView()
+    let barChartView:BarChartView = BarChartView()
     
     // config
     var numberOfRows = 6
@@ -34,9 +58,6 @@ class BookReadShowViewController: UIViewController {
     let dateCellSize: CGFloat? = nil
     
     var selectDates:[Date] = []
-    
-    let daysReadLabel:UILabel = UILabel()
-    let countsReadLabel:UILabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +76,44 @@ class BookReadShowViewController: UIViewController {
             self.calendarView.scrollToDate(Date())
         })
         
-        view.addSubview(daysReadLabel)
-        view.addSubview(countsReadLabel)
+        view.addSubview(barChartView)
+
+
+    }
+    
+    func loadChart() {
+        let values = [Double(readDaysCurrentMonth()),  Double(continuousReadBooksCurrentMonth()), Double(readBooksCountCurrentMonth())]
+        
+        barChartView.chartDescription?.enabled = false
+        barChartView.drawBarShadowEnabled = false
+        barChartView.highlightFullBarEnabled = false
+        barChartView.pinchZoomEnabled = false
+        barChartView.leftAxis.enabled = false
+        barChartView.rightAxis.enabled = false
+        barChartView.drawGridBackgroundEnabled = false
+        barChartView.xAxis.labelPosition = .bottom
+        barChartView.xAxis.drawGridLinesEnabled = false
+        barChartView.xAxis.granularity = 1.0
+        barChartView.xAxis.valueFormatter = ItemAxisValueFormatter()
+        
+        barChartView.dragEnabled = false
+        barChartView.scaleXEnabled = false
+        barChartView.scaleYEnabled = false
+        barChartView.legend.enabled = false
+        
+        var dataEntries: [BarChartDataEntry] = []
+        for i in 0..<3 {
+            let entry = BarChartDataEntry(x: Double(i), y: values[i])
+            dataEntries.append(entry)
+        }
+        
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: "")
+        chartDataSet.valueFormatter = ValueAxisValueFormatter()
+        chartDataSet.colors = [UIColor.greenSea(), UIColor.peterRiver(), UIColor.carrot()]
+        let chartData = BarChartData(dataSets: [chartDataSet])
+        chartData.barWidth = 0.5
+        barChartView.data = chartData
+        barChartView.notifyDataSetChanged()
     }
     
     func reloadSelectDates() {
@@ -69,15 +126,47 @@ class BookReadShowViewController: UIViewController {
         self.calendarView.reloadData()
     }
     
+    private func continuousReadBooksCurrentMonth() -> Int {
+        var count = 0
+        let realm = try! Realm()
+        let result = realm.objects(BookReadDateData.self).filter("date >= %@", Date().startMonthOfDate).filter("date <= %@", Date().endMonthOfDate)
+        var dateCurrent = Date()
+        while dateCurrent >= Date().startMonthOfDate {
+            var find = false
+            for r in result {
+                if r.date == dateCurrent.zeroOfDate {
+                    find = true
+                    break
+                }
+            }
+            if find == false {
+                break
+            } else {
+                count = count + 1
+            }
+            dateCurrent = Date(timeInterval: -3600*24, since: dateCurrent)
+        }
+        return count
+    }
+    
+    private func readDaysCurrentMonth() -> Int {
+        let realm = try! Realm()
+        return realm.objects(BookReadDateData.self).filter("date >= %@", Date().startMonthOfDate).filter("date <= %@", Date().endMonthOfDate).count
+    }
+    
+    private func readBooksCountCurrentMonth() -> Int {
+        let realm = try! Realm()
+        return realm.objects(BookReadDoneData.self).filter("doneDate >= %@", Date().startMonthOfDate).filter("doneDate <= %@", Date().endMonthOfDate).count
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         calendarView.scrollToDate(Date(), triggerScrollToDateDelegate: false, animateScroll: false)
         
-        let realm = try! Realm()
-        daysReadLabel.text = "本月阅读天数\(realm.objects(BookReadDateData.self).filter("date >= %@", Date().startMonthOfDate).filter("date <= %@", Date().endMonthOfDate).count)"
-        countsReadLabel.text = "本月读完了\(realm.objects(BookReadDoneData.self).filter("doneDate >= %@", Date().startMonthOfDate).filter("doneDate <= %@", Date().endMonthOfDate).count)本书"
         self.reloadSelectDates()
+        
+        loadChart()
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,18 +184,11 @@ class BookReadShowViewController: UIViewController {
             maker.height.equalTo(300)
         }
         
-        daysReadLabel.snp.remakeConstraints { (maker:ConstraintMaker) in
+        barChartView.snp.remakeConstraints { (maker:ConstraintMaker) in
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
-            maker.top.equalTo(calendarView.snp.bottom).offset(10)
-            maker.height.equalTo(30)
-        }
-        
-        countsReadLabel.snp.remakeConstraints { (maker:ConstraintMaker) in
-            maker.left.equalToSuperview()
-            maker.right.equalToSuperview()
-            maker.top.equalTo(daysReadLabel.snp.bottom).offset(10)
-            maker.height.equalTo(30)
+            maker.top.equalTo(calendarView.snp.bottom).offset(20)
+            maker.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-20)
         }
     }
 }
