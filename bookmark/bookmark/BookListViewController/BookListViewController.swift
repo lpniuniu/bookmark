@@ -36,11 +36,15 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.clouds()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(self.addBook))
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action:#selector(self.searchBook))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:#selector(self.addBook))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action:#selector(self.searchBook))
+        navigationController?.navigationBar.tintColor = UIColor.black
         
         tabBarController?.tabBar.barTintColor = UIColor.white
         tabBarController?.tabBar.tintColor = UIColor.black
+        let backItem = UIBarButtonItem()
+        backItem.title = "返回"
+        navigationItem.backBarButtonItem = backItem
         
         installBookListTableView()
         installPageSlider()
