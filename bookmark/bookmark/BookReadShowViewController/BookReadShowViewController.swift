@@ -230,6 +230,12 @@ extension BookReadShowViewController: JTAppleCalendarViewDelegate, JTAppleCalend
         } else {
             cell.backgroundImage.image = nil
         }
+        
+        if cellState.date.zeroOfDate == Date().zeroOfDate {
+            cell.todayImage.image = UIImage(named: "today")
+        } else {
+            cell.todayImage.image = nil
+        }
     }
     
     func calendar(_ calendar: JTAppleCalendarView, sectionHeaderSizeFor range: (start: Date, end: Date), belongingTo month: Int) -> CGSize {
