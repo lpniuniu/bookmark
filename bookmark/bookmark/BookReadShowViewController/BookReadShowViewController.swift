@@ -144,9 +144,9 @@ extension BookReadShowViewController: JTAppleCalendarViewDelegate, JTAppleCalend
         }
         
         if selectDates.contains(cellState.date.zeroOfDate) {
-            cell.backgroundColor = UIColor.greenSea()
+            cell.backgroundImage.image  = UIImage(named: "book_2")
         } else {
-            cell.backgroundColor = UIColor.white
+            cell.backgroundImage.image = nil
         }
     }
     

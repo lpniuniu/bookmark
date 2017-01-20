@@ -12,11 +12,13 @@ import JTAppleCalendar
 
 class BookCalendarCellView: JTAppleDayCellView {
 
+    let backgroundImage:UIImageView = UIImageView()
     let dayLabel:UILabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        addSubview(backgroundImage)
+        backgroundImage.alpha = 0.6
         addSubview(dayLabel)
     }
     
@@ -26,6 +28,12 @@ class BookCalendarCellView: JTAppleDayCellView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        backgroundImage.snp.remakeConstraints { (maker:ConstraintMaker) in
+            maker.left.equalToSuperview().offset(12)
+            maker.right.equalToSuperview().offset(-12)
+            maker.top.bottom.equalToSuperview()
+        }
         
         dayLabel.snp.remakeConstraints { (maker:ConstraintMaker) in
             maker.edges.equalToSuperview()
