@@ -89,8 +89,8 @@ class BookReadShowViewController: UIViewController {
         super.viewWillLayoutSubviews()
         
         calendarView.snp.remakeConstraints { (maker:ConstraintMaker) in
-            maker.left.equalToSuperview()
-            maker.right.equalToSuperview()
+            maker.left.equalToSuperview().offset(10)
+            maker.right.equalToSuperview().offset(-10)
             maker.top.equalTo(topLayoutGuide.snp.bottom)
             maker.height.equalTo(300)
         }
@@ -136,6 +136,7 @@ extension BookReadShowViewController: JTAppleCalendarViewDelegate, JTAppleCalend
     func calendar(_ calendar: JTAppleCalendarView, willDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
         let cell:BookCalendarCellView = (cell as? BookCalendarCellView)!
         cell.dayLabel.text = cellState.text
+        cell.dayLabel.textAlignment = .center
         if cellState.dateBelongsTo == .thisMonth {
             cell.dayLabel.textColor = UIColor.black
         } else {

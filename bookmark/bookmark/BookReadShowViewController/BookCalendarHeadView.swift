@@ -26,12 +26,14 @@ class BookCalendarHeadView: JTAppleHeaderView {
         for _ in 1...7 {
             let label = UILabel()
             label.text = headTitles[i]
+            label.textAlignment = .center
             titleLabels.append(label)
             addSubview(label)
             i = i + 1
         }
         
         monthLabel.textAlignment = .center
+        monthLabel.font = monthLabel.font.withSize(20)
         
         weak var weakSelf = self
         Bulb.bulbGlobal().register(BookCalendarChangeMonthSignal.signalDefault()) { (data:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
@@ -58,8 +60,9 @@ class BookCalendarHeadView: JTAppleHeaderView {
         super.layoutSubviews()
         
         monthLabel.snp.makeConstraints { (maker:ConstraintMaker) in
-            maker.top.equalToSuperview().offset(10)
-            maker.left.right.equalToSuperview()
+            maker.top.equalToSuperview().offset(30)
+            maker.left.equalToSuperview().offset(10)
+            maker.right.equalToSuperview().offset(-10)
             maker.height.equalTo(15)
         }
         
@@ -72,7 +75,7 @@ class BookCalendarHeadView: JTAppleHeaderView {
                     maker.left.equalTo((preLabel?.snp.right)!)
                 }
                 maker.width.equalTo(frame.width/7.0)
-                maker.height.equalToSuperview()
+                maker.height.equalTo(60)
                 maker.top.equalTo(monthLabel.snp.bottom)
             })
             preLabel = label
