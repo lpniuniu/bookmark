@@ -26,10 +26,12 @@ class BookMeViewController: FormViewController {
             dict[result.key!] = result
         }
         view.backgroundColor = UIColor.white
-
+        
+        title = "我"
+        
         let signal:BulbBoolSignal? = Bulb.bulbGlobal().getSignalFromHungUpList(AuthNotiSignal.identifier()) as? BulbBoolSignal
         notiAuth =  signal != nil && signal!.isOn()
-        form = Section("提醒")
+        form = Section("提醒选项")
             <<< SwitchRow(){
                 $0.title = "鼓励提醒(连续阅读3天)"
                 if notiAuth == false {
@@ -109,6 +111,14 @@ class BookMeViewController: FormViewController {
                     }
             })
             +++ Section()
+            <<< ButtonRow(){
+                $0.title = "关于"
+            }.cellUpdate({ (cell, row) in
+                cell.textLabel?.textAlignment = .left
+                cell.textLabel?.textColor = UIColor.black
+            }).onCellSelection({ (cell, row) in
+                self.navigationController?.pushViewController(BookAboutViewController(), animated: true)
+            })
     }
     
     override func viewWillAppear(_ animated: Bool) {

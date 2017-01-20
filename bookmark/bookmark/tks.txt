@@ -1,0 +1,13 @@
+FlatUIKit
+SnapKit
+BlocksKit
+SCLAlertView
+SWTableViewCell
+RealmSwift
+Alamofire
+Kingfisher
+Toast-Swift
+JTAppleCalendar
+BTNavigationDropdownMenu
+Eureka
+Charts

@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let readshowVC = BookReadShowViewController()
         readshowVC.tabBarItem.title = "阅历"
         readshowVC.tabBarItem.image = UIImage(named: "book_2")
-        let meVC = BookMeViewController()
+        let meVC = UINavigationController(rootViewController: BookMeViewController())
         meVC.tabBarItem.title = "我"
         meVC.tabBarItem.image = UIImage(named: "me")
         tabVC.viewControllers = [listVC, readshowVC, meVC]

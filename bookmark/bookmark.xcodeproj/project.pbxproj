@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B047B211E3200DC002F9F69 /* BookAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B047B201E3200DC002F9F69 /* BookAboutViewController.swift */; };
+		0B047B2B1E322962002F9F69 /* tks.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0B047B2A1E322962002F9F69 /* tks.txt */; };
+		0B047B2D1E3229EF002F9F69 /* ThanksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B047B2C1E3229EF002F9F69 /* ThanksViewController.swift */; };
+		0B047B2F1E322F49002F9F69 /* an.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0B047B2E1E322F49002F9F69 /* an.txt */; };
+		0B047B311E3230CC002F9F69 /* AdvanceNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B047B301E3230CC002F9F69 /* AdvanceNoticeViewController.swift */; };
 		0B60F6691E111C2800FDA393 /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6681E111C2800FDA393 /* BookData.swift */; };
 		0B60F6C31E139A3100FDA393 /* BookListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6BD1E139A3000FDA393 /* BookListTableView.swift */; };
 		0B60F6C41E139A3100FDA393 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B60F6BE1E139A3000FDA393 /* BookCell.swift */; };
@@ -50,6 +55,11 @@
 
 /* Begin PBXFileReference section */
 		081E0D320AB5F386BE0B9153 /* Pods-bookmark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmark.release.xcconfig"; path = "Pods/Target Support Files/Pods-bookmark/Pods-bookmark.release.xcconfig"; sourceTree = "<group>"; };
+		0B047B201E3200DC002F9F69 /* BookAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookAboutViewController.swift; path = BookAboutViewController/BookAboutViewController.swift; sourceTree = "<group>"; };
+		0B047B2A1E322962002F9F69 /* tks.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tks.txt; sourceTree = "<group>"; };
+		0B047B2C1E3229EF002F9F69 /* ThanksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThanksViewController.swift; path = BookAboutViewController/ThanksViewController.swift; sourceTree = "<group>"; };
+		0B047B2E1E322F49002F9F69 /* an.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = an.txt; sourceTree = "<group>"; };
+		0B047B301E3230CC002F9F69 /* AdvanceNoticeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdvanceNoticeViewController.swift; path = BookAboutViewController/AdvanceNoticeViewController.swift; sourceTree = "<group>"; };
 		0B60F6681E111C2800FDA393 /* BookData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookData.swift; path = bookmark/data/BookData.swift; sourceTree = "<group>"; };
 		0B60F6BD1E139A3000FDA393 /* BookListTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookListTableView.swift; path = BookListViewController/BookListTableView.swift; sourceTree = "<group>"; };
 		0B60F6BE1E139A3000FDA393 /* BookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookCell.swift; path = BookListViewController/BookCell.swift; sourceTree = "<group>"; };
@@ -110,6 +120,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B047B1F1E3200B2002F9F69 /* BookAboutViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0B047B201E3200DC002F9F69 /* BookAboutViewController.swift */,
+				0B047B2C1E3229EF002F9F69 /* ThanksViewController.swift */,
+				0B047B301E3230CC002F9F69 /* AdvanceNoticeViewController.swift */,
+			);
+			name = BookAboutViewController;
+			sourceTree = "<group>";
+		};
 		0B60F6671E111C0900FDA393 /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,10 +230,13 @@
 				0B7C26421E1F2F340056A2F5 /* BookSearchViewController */,
 				0BEACB4A1E238B4000B7B5B4 /* BookReadShowViewController */,
 				0BEACB4B1E238B5100B7B5B4 /* BookMeViewcontroller */,
+				0B047B1F1E3200B2002F9F69 /* BookAboutViewController */,
 				0BF514281E2DAF89008F2676 /* BookBusiness */,
 				0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */,
 				0BF6AB1E1DFFD47C00B72C99 /* LaunchScreen.storyboard */,
 				0BF6AB211DFFD47C00B72C99 /* Info.plist */,
+				0B047B2A1E322962002F9F69 /* tks.txt */,
+				0B047B2E1E322F49002F9F69 /* an.txt */,
 			);
 			path = bookmark;
 			sourceTree = "<group>";
@@ -350,8 +373,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B047B2B1E322962002F9F69 /* tks.txt in Resources */,
 				0BF6AB201DFFD47C00B72C99 /* LaunchScreen.storyboard in Resources */,
 				0BF6AB1D1DFFD47C00B72C99 /* Assets.xcassets in Resources */,
+				0B047B2F1E322F49002F9F69 /* an.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,8 +505,10 @@
 				0BEACB5F1E24D44100B7B5B4 /* BookCalendarHeadView.swift in Sources */,
 				0B60F6C81E139A3100FDA393 /* BookAddAlertView.swift in Sources */,
 				0BF5142A1E2DB0F7008F2676 /* NotificationManager.swift in Sources */,
+				0B047B2D1E3229EF002F9F69 /* ThanksViewController.swift in Sources */,
 				0B7C26441E1F2F530056A2F5 /* BookSearchViewController.swift in Sources */,
 				0B60F6C41E139A3100FDA393 /* BookCell.swift in Sources */,
+				0B047B311E3230CC002F9F69 /* AdvanceNoticeViewController.swift in Sources */,
 				0BEACB651E26019100B7B5B4 /* BookDoneListTableView.swift in Sources */,
 				0BB6AAEB1E1E2F2800B064CB /* ArrowSlider.swift in Sources */,
 				0B60F6C31E139A3100FDA393 /* BookListTableView.swift in Sources */,
@@ -494,6 +521,7 @@
 				0B60F6C51E139A3100FDA393 /* BookSlider.swift in Sources */,
 				0BEACB5D1E24CF9A00B7B5B4 /* BookCalendarCellView.swift in Sources */,
 				0BF6AB161DFFD47C00B72C99 /* AppDelegate.swift in Sources */,
+				0B047B211E3200DC002F9F69 /* BookAboutViewController.swift in Sources */,
 				0BEACB671E2607C700B7B5B4 /* BookDoneCell.swift in Sources */,
 				0BF514091E2881BC008F2676 /* BookSettingData.swift in Sources */,
 				0B60F6C61E139A3100FDA393 /* BookListViewController.swift in Sources */,
