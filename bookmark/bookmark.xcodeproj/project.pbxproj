@@ -659,7 +659,7 @@
 				INFOPLIST_FILE = bookmark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.niuniu.bookmark;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "三味书签";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -674,7 +674,7 @@
 				INFOPLIST_FILE = bookmark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.niuniu.bookmark;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "三味书签";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
