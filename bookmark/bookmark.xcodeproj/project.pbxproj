@@ -81,7 +81,7 @@
 		0BF514081E2881BC008F2676 /* BookSettingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookSettingData.swift; path = bookmark/data/BookSettingData.swift; sourceTree = "<group>"; };
 		0BF514291E2DB0F7008F2676 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationManager.swift; path = BookBusiness/NotificationManager.swift; sourceTree = "<group>"; };
 		0BF5143E1E2F674D008F2676 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		0BF6AB121DFFD47C00B72C99 /* bookmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BF6AB121DFFD47C00B72C99 /* 三味书签.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "三味书签.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BF6AB1F1DFFD47C00B72C99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -215,7 +215,7 @@
 		0BF6AB131DFFD47C00B72C99 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0BF6AB121DFFD47C00B72C99 /* bookmark.app */,
+				0BF6AB121DFFD47C00B72C99 /* 三味书签.app */,
 				0BF6AB261DFFD47C00B72C99 /* bookmarkTests.xctest */,
 			);
 			name = Products;
@@ -301,7 +301,7 @@
 			);
 			name = bookmark;
 			productName = bookmark;
-			productReference = 0BF6AB121DFFD47C00B72C99 /* bookmark.app */;
+			productReference = 0BF6AB121DFFD47C00B72C99 /* 三味书签.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0BF6AB251DFFD47C00B72C99 /* bookmarkTests */ = {

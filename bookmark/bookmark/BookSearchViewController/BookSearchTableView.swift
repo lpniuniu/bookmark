@@ -12,6 +12,7 @@ import Kingfisher
 import Bulb
 import RealmSwift
 import Toast_Swift
+import Crashlytics
 
 class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
@@ -98,9 +99,11 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
     // MARK: search bar delegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("\(searchBar.text)")
+        if let text = searchBar.text {
+            Answers.logSearch(withQuery: text, customAttributes: [:])
+        }
         if let searchText = searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
             Alamofire.request("https://api.douban.com/v2/book/search?q=\(searchText)").responseJSON { (response:DataResponse<Any>) in
-                print("\(response.result)")
                 guard response.result.isSuccess else {
                     return
                 }
