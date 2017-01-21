@@ -41,6 +41,7 @@
 		A24AEB161E62FCF445A7DE32 /* Pods_bookmark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2284B64C52341F0B8A05A82D /* Pods_bookmark.framework */; };
 		E3D0E9291E2B93B2003D1D5E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3D0E9281E2B93B2003D1D5E /* UserNotifications.framework */; };
 		E3EEEDC71E253D090002F772 /* Date+Zero.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EEEDC61E253D090002F772 /* Date+Zero.swift */; };
+		E3F9D6881E3377E100999FC8 /* BookFeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F9D6871E3377E100999FC8 /* BookFeedBackViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		95B8921AEEE3C610574BEDBD /* Pods_bookmarkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookmarkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D0E9281E2B93B2003D1D5E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		E3EEEDC61E253D090002F772 /* Date+Zero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Zero.swift"; path = "bookmark/Util/Date+Zero.swift"; sourceTree = "<group>"; };
+		E3F9D6871E3377E100999FC8 /* BookFeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookFeedBackViewController.swift; path = BookAboutViewController/BookFeedBackViewController.swift; sourceTree = "<group>"; };
 		EB3D22468C03DF17FA11E216 /* Pods-bookmarkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bookmarkTests/Pods-bookmarkTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +128,7 @@
 				0B047B201E3200DC002F9F69 /* BookAboutViewController.swift */,
 				0B047B2C1E3229EF002F9F69 /* ThanksViewController.swift */,
 				0B047B301E3230CC002F9F69 /* AdvanceNoticeViewController.swift */,
+				E3F9D6871E3377E100999FC8 /* BookFeedBackViewController.swift */,
 			);
 			name = BookAboutViewController;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				0BEACB4D1E238B9B00B7B5B4 /* BookReadShowViewController.swift in Sources */,
 				0B60F6C51E139A3100FDA393 /* BookSlider.swift in Sources */,
 				0BEACB5D1E24CF9A00B7B5B4 /* BookCalendarCellView.swift in Sources */,
+				E3F9D6881E3377E100999FC8 /* BookFeedBackViewController.swift in Sources */,
 				0BF6AB161DFFD47C00B72C99 /* AppDelegate.swift in Sources */,
 				0B047B211E3200DC002F9F69 /* BookAboutViewController.swift in Sources */,
 				0BEACB671E2607C700B7B5B4 /* BookDoneCell.swift in Sources */,

@@ -21,7 +21,7 @@ class AdvanceNoticeViewController: UIViewController {
         let path = Bundle.main.path(forResource: "an", ofType: "txt")
         let text = try! String(contentsOfFile: path!, encoding: .utf8)
         textView.text = text
-        
+        textView.isEditable = false
         view.addSubview(textView)
     }
 
