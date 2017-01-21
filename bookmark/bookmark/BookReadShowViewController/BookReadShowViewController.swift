@@ -26,7 +26,7 @@ class ItemAxisValueFormatter : NSObject, IAxisValueFormatter {
         case 1:
             return "本月连续阅读天数"
         case 2:
-            return "本书读书本数"
+            return "本月读书本数"
         default:
             return ""
         }
