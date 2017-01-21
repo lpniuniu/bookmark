@@ -22,6 +22,7 @@ class ThanksViewController: UIViewController {
         let text = try! String(contentsOfFile: path!, encoding: .utf8)
         textView.text = text
         textView.isEditable = false
+        textView.font = UIFont.systemFont(ofSize: 18)
         view.addSubview(textView)
     }
 
