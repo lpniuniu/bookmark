@@ -124,12 +124,27 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
                 realm.add(readDate)
             })
         } else if index == 1 {
-            let realm = try! Realm()
-            try! realm.write({
-                realm.delete(realm.objects(BookData.self).filter("done == false")[(indexPath(for: cell)?.row)!])
+            let deleteConfirmAlert = UIAlertController(title: "即将删除这本书，是否确认", message: "", preferredStyle: .alert)
+            deleteConfirmAlert.view.tintColor = UIColor.greenSea()
+            let confirmAction = UIAlertAction(title: "确认", style: .default, handler: { (action:UIAlertAction) in
+                let realm = try! Realm()
+                try! realm.write({
+                    realm.delete(realm.objects(BookData.self).filter("done == false")[(self.indexPath(for: cell)?.row)!])
+                })
+                self.deleteRows(at:[self.indexPath(for: cell)!], with: .fade)
+                Bulb.bulbGlobal().fire(BookListDidDeselectSignal.signalDefault(), data:nil)
             })
-            deleteRows(at:[indexPath(for: cell)!], with: .fade)
-            Bulb.bulbGlobal().fire(BookListDidDeselectSignal.signalDefault(), data:nil)
+            
+            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: { (action:UIAlertAction) in
+                
+            })
+            
+            deleteConfirmAlert.addAction(confirmAction)
+            deleteConfirmAlert.addAction(cancelAction)
+            
+            UIApplication.shared.keyWindow?.rootViewController?.present(deleteConfirmAlert, animated: true, completion: { 
+                
+            })
         }
     }
     

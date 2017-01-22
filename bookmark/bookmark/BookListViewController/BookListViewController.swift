@@ -49,7 +49,6 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         installBookListTableView()
         installPageSlider()
         installPullDownMenu()
-        
         installBookDoneListTableView()
         
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
