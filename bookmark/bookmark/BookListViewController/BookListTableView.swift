@@ -40,6 +40,7 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         
         weak var weakSelf = self
         Bulb.bulbGlobal().register(BookSavedSignal.signalDefault()) { (book:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
+            weakSelf?.isHidden = false
             weakSelf?.reloadData()
             
             if weakSelf?.selectIndexPath != nil {

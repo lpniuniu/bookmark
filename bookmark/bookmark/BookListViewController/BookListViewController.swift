@@ -26,6 +26,7 @@ class BookSavedSignal: BulbBoolSignal {
 
 class BookListViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    let noDataLabel:UILabel = UILabel()
     let bookListTable:BookListTableView = BookListTableView()
     let bookDoneListTable:BookDoneListTableView = BookDoneListTableView()
     let pageSlider:BookSlider = BookSlider()
@@ -46,13 +47,40 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         backItem.title = "返回"
         navigationItem.backBarButtonItem = backItem
         
+        installNoDataLabel()
         installBookListTableView()
         installPageSlider()
         installPullDownMenu()
         installBookDoneListTableView()
         
+        
+        let realm = try! Realm()
+        let count = realm.objects(BookData.self).filter("done == false").count
+        if (count > 0) {
+            bookListTable.isHidden = false
+        } else {
+            bookListTable.isHidden = true
+        }
+            
+        
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         print("\(documentsPath)")
+    }
+    
+    func installNoDataLabel() {
+        view.addSubview(noDataLabel)
+        noDataLabel.backgroundColor = UIColor.clouds()
+        noDataLabel.lineBreakMode = .byWordWrapping
+        noDataLabel.numberOfLines = 0
+        noDataLabel.text = "您还没有任何阅读的书目，\n通过左上角的🔍或右上角的'+'\n来添加您要阅读的书"
+        noDataLabel.font = UIFont.systemFont(ofSize: 18)
+        noDataLabel.textAlignment = .center
+        noDataLabel.snp.makeConstraints { (maker:ConstraintMaker) in
+            maker.left.equalToSuperview().offset(20)
+            maker.right.equalToSuperview().offset(-20)
+            maker.centerY.equalToSuperview()
+            maker.height.equalTo(100)
+        }
     }
     
     func installPullDownMenu() {
@@ -171,7 +199,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         bookListTable.backgroundColor = view.backgroundColor
         view.addSubview(bookListTable)
         bookListTable.snp.makeConstraints { (maker:ConstraintMaker) in
-            maker.top.equalTo(view).offset(10)
+            maker.top.equalTo(topLayoutGuide.snp.bottom).offset(10)
             maker.left.equalTo(view).offset(10)
             maker.right.equalTo(view).offset(-10)
             maker.bottom.equalTo(bottomLayoutGuide.snp.top)
