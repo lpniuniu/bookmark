@@ -208,7 +208,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         weak var weakSelf = self
         Bulb.bulbGlobal().register(BookListDidSelectSignal.signalDefault(), block: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
             weakSelf?.bookListTable.snp.remakeConstraints { (maker:ConstraintMaker) in
-                maker.top.equalTo((weakSelf?.view)!).offset(10)
+                maker.top.equalTo((weakSelf?.topLayoutGuide.snp.bottom)!).offset(10)
                 maker.left.equalTo((weakSelf?.view)!).offset(10)
                 maker.right.equalTo((weakSelf?.view)!).offset(-40)
                 maker.bottom.equalTo((weakSelf?.bottomLayoutGuide.snp.top)!)
@@ -223,7 +223,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         Bulb.bulbGlobal().register(BookListDidDeselectSignal.signalDefault(), block: { (firstData:Any?, identfier2Signal:[String : BulbSignal]?) -> Bool in
             
             weakSelf?.bookListTable.snp.remakeConstraints { (maker:ConstraintMaker) in
-                maker.top.equalTo((weakSelf?.view)!).offset(10)
+                maker.top.equalTo((weakSelf?.topLayoutGuide.snp.bottom)!).offset(10)
                 maker.left.equalTo((weakSelf?.view)!).offset(10)
                 maker.right.equalTo((weakSelf?.view)!).offset(-10)
                 maker.bottom.equalTo((weakSelf?.bottomLayoutGuide.snp.top)!)
