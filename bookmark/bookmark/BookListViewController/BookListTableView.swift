@@ -11,6 +11,7 @@ import SnapKit
 import Bulb
 import SWTableViewCell
 import RealmSwift
+import Crashlytics
 
 // what she say
 class BookListDidSelectSignal: BulbBoolSignal {
@@ -39,12 +40,16 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         showsVerticalScrollIndicator = false
         
         weak var weakSelf = self
-        Bulb.bulbGlobal().register(BookSavedSignal.signalDefault()) { (book:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
+        Bulb.bulbGlobal().register(BookSavedSignal.signalDefault()) { (data:Any?, identifier2Signal:[String : BulbSignal]?) -> Bool in
             weakSelf?.isHidden = false
             weakSelf?.reloadData()
             
             if weakSelf?.selectIndexPath != nil {
                 weakSelf?.selectRow(at: weakSelf?.selectIndexPath, animated: true, scrollPosition: .none)
+            }
+            
+            if let book = data as? BookData {
+                Answers.logCustomEvent(withName: "addbook", customAttributes: ["name" : book.name])
             }
             return true
         }
