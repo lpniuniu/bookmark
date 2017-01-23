@@ -159,7 +159,15 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
         let bookNameTextField = alertView?.addTextField()
         let pageTextField = alertView?.addTextField()
         pageTextField?.keyboardType = .numberPad
-        alertView?.addButton("确认", action: { 
+        alertView?.addButton("确认", action: {
+            guard (bookNameTextField?.text?.characters.count)! > 0 else {
+                return
+            }
+            
+            guard (pageTextField?.text?.characters.count)! > 0 else {
+                return
+            }
+            
             let imageView:UIImageView? = self.alertView?.circleIconView as? UIImageView
             let book = BookData()
             book.name = (bookNameTextField?.text)!
