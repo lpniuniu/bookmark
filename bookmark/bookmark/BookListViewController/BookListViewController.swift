@@ -164,7 +164,7 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
                 return
             }
             
-            guard (pageTextField?.text?.characters.count)! > 0 else {
+            guard Int((pageTextField?.text)!) != nil else {
                 return
             }
             
