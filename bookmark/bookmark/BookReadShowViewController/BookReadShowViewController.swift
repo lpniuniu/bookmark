@@ -51,7 +51,6 @@ class BookReadShowViewController: UIViewController {
     var bookCalendar = Calendar.current
     var generateInDates: InDateCellGeneration = .forAllMonths
     var generateOutDates: OutDateCellGeneration = .tillEndOfGrid
-    var hasStrictBoundaries = true
     let firstDayOfWeek: DaysOfWeek = .sunday
     let disabledColor = UIColor.lightGray
     let enabledColor = UIColor.blue
@@ -210,8 +209,7 @@ extension BookReadShowViewController: JTAppleCalendarViewDelegate, JTAppleCalend
                                                  calendar: bookCalendar,
                                                  generateInDates: generateInDates,
                                                  generateOutDates: generateOutDates,
-                                                 firstDayOfWeek: firstDayOfWeek,
-                                                 hasStrictBoundaries: hasStrictBoundaries)
+                                                 firstDayOfWeek: firstDayOfWeek)
         return parameters
     }
     
