@@ -45,7 +45,7 @@ class BookDoneListTableView: UITableView, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:BookDoneCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! BookDoneCell
         cell.backgroundColor = backgroundColor
-        cell.rightUtilityButtons = rightButton() as NSArray as! [Any]
+        cell.rightUtilityButtons = rightButton() as NSArray as? [Any]
         cell.delegate = self
         
         let realm = try! Realm()
