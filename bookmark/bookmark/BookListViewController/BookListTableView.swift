@@ -88,7 +88,7 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         cell.cornerRadius = 5.0
         cell.separatorHeight = 20.0
         cell.backgroundColor = backgroundColor
-        cell.rightUtilityButtons = rightButton() as NSArray as! [Any]
+        cell.rightUtilityButtons = rightButton() as NSArray as? [Any]
         cell.delegate = self
         
         let realm = try! Realm()
