@@ -122,7 +122,7 @@ class BookSearchTableView: UITableView, UITableViewDelegate, UITableViewDataSour
                     guard let bookName = book.object(forKey: "title") as! String?, bookName != "" else {
                         continue
                     }
-                    guard let bookPage = book.object(forKey: "pages") as! String?, bookPage != ""  else {
+                    guard let bookPage = book.object(forKey: "pages") as! String?, Int(bookPage) != nil  else {
                         continue
                     }
                     guard let bookImage = book.object(forKey: "image") as! String?, bookImage != ""  else {
