@@ -37,11 +37,13 @@
 		0BF6AB1D1DFFD47C00B72C99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */; };
 		0BF6AB201DFFD47C00B72C99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF6AB1E1DFFD47C00B72C99 /* LaunchScreen.storyboard */; };
 		0BF6AB2B1DFFD47C00B72C99 /* bookmarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF6AB2A1DFFD47C00B72C99 /* bookmarkTests.swift */; };
+		817483B31BA127A28CB2AA90 /* Pods_____.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D14C5D9AB435ED308AB09E /* Pods_____.framework */; };
 		8CF417632DFDB9FB69BEAB3A /* Pods_bookmarkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B8921AEEE3C610574BEDBD /* Pods_bookmarkTests.framework */; };
 		A24AEB161E62FCF445A7DE32 /* Pods_bookmark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2284B64C52341F0B8A05A82D /* Pods_bookmark.framework */; };
 		E3D0E9291E2B93B2003D1D5E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3D0E9281E2B93B2003D1D5E /* UserNotifications.framework */; };
 		E3EEEDC71E253D090002F772 /* Date+Zero.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EEEDC61E253D090002F772 /* Date+Zero.swift */; };
 		E3F9D6881E3377E100999FC8 /* BookFeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F9D6871E3377E100999FC8 /* BookFeedBackViewController.swift */; };
+		F469987F611247C85182A1F3 /* Pods_____Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85B69EDEDB3E971ED383E165 /* Pods_____Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,22 +84,28 @@
 		0BF514081E2881BC008F2676 /* BookSettingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookSettingData.swift; path = bookmark/data/BookSettingData.swift; sourceTree = "<group>"; };
 		0BF514291E2DB0F7008F2676 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationManager.swift; path = BookBusiness/NotificationManager.swift; sourceTree = "<group>"; };
 		0BF5143E1E2F674D008F2676 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		0BF6AB121DFFD47C00B72C99 /* 三味书签.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "三味书签.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BF6AB121DFFD47C00B72C99 /* bookmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BF6AB1F1DFFD47C00B72C99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BF6AB211DFFD47C00B72C99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0BF6AB261DFFD47C00B72C99 /* 三味书签Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "三味书签Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BF6AB261DFFD47C00B72C99 /* bookmarkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bookmarkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF6AB2A1DFFD47C00B72C99 /* bookmarkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookmarkTests.swift; sourceTree = "<group>"; };
 		0BF6AB2C1DFFD47C00B72C99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2284B64C52341F0B8A05A82D /* Pods_bookmark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookmark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		33D14C5D9AB435ED308AB09E /* Pods_____.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_____.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		569A82A99315EE49406CDF09 /* Pods-三味书签Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-三味书签Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-三味书签Tests/Pods-三味书签Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		68EFF4CB35A05215C7321315 /* Pods-bookmarkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bookmarkTests/Pods-bookmarkTests.release.xcconfig"; sourceTree = "<group>"; };
 		73117A30AA8BFAFF92233EC8 /* Pods-bookmark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bookmark/Pods-bookmark.debug.xcconfig"; sourceTree = "<group>"; };
+		85B69EDEDB3E971ED383E165 /* Pods_____Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_____Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A8F10AF54AC53FB678ED5CA /* Pods-三味书签.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-三味书签.release.xcconfig"; path = "Pods/Target Support Files/Pods-三味书签/Pods-三味书签.release.xcconfig"; sourceTree = "<group>"; };
+		9497B113885EF91B17B7AE17 /* Pods-三味书签Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-三味书签Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-三味书签Tests/Pods-三味书签Tests.release.xcconfig"; sourceTree = "<group>"; };
 		95B8921AEEE3C610574BEDBD /* Pods_bookmarkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookmarkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D0E9281E2B93B2003D1D5E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		E3EEEDC61E253D090002F772 /* Date+Zero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Zero.swift"; path = "bookmark/Util/Date+Zero.swift"; sourceTree = "<group>"; };
 		E3F9D6871E3377E100999FC8 /* BookFeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookFeedBackViewController.swift; path = BookAboutViewController/BookFeedBackViewController.swift; sourceTree = "<group>"; };
 		EB3D22468C03DF17FA11E216 /* Pods-bookmarkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bookmarkTests/Pods-bookmarkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F551F98937F9D5642B9EBF39 /* Pods-三味书签.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-三味书签.debug.xcconfig"; path = "Pods/Target Support Files/Pods-三味书签/Pods-三味书签.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +116,7 @@
 				0BF5143F1E2F674D008F2676 /* AdSupport.framework in Frameworks */,
 				E3D0E9291E2B93B2003D1D5E /* UserNotifications.framework in Frameworks */,
 				A24AEB161E62FCF445A7DE32 /* Pods_bookmark.framework in Frameworks */,
+				817483B31BA127A28CB2AA90 /* Pods_____.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CF417632DFDB9FB69BEAB3A /* Pods_bookmarkTests.framework in Frameworks */,
+				F469987F611247C85182A1F3 /* Pods_____Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,8 +228,8 @@
 		0BF6AB131DFFD47C00B72C99 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0BF6AB121DFFD47C00B72C99 /* 三味书签.app */,
-				0BF6AB261DFFD47C00B72C99 /* 三味书签Tests.xctest */,
+				0BF6AB121DFFD47C00B72C99 /* bookmark.app */,
+				0BF6AB261DFFD47C00B72C99 /* bookmarkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -260,6 +270,10 @@
 				081E0D320AB5F386BE0B9153 /* Pods-bookmark.release.xcconfig */,
 				EB3D22468C03DF17FA11E216 /* Pods-bookmarkTests.debug.xcconfig */,
 				68EFF4CB35A05215C7321315 /* Pods-bookmarkTests.release.xcconfig */,
+				F551F98937F9D5642B9EBF39 /* Pods-三味书签.debug.xcconfig */,
+				8A8F10AF54AC53FB678ED5CA /* Pods-三味书签.release.xcconfig */,
+				569A82A99315EE49406CDF09 /* Pods-三味书签Tests.debug.xcconfig */,
+				9497B113885EF91B17B7AE17 /* Pods-三味书签Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -279,6 +293,8 @@
 				E3D0E9281E2B93B2003D1D5E /* UserNotifications.framework */,
 				2284B64C52341F0B8A05A82D /* Pods_bookmark.framework */,
 				95B8921AEEE3C610574BEDBD /* Pods_bookmarkTests.framework */,
+				33D14C5D9AB435ED308AB09E /* Pods_____.framework */,
+				85B69EDEDB3E971ED383E165 /* Pods_____Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -286,9 +302,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0BF6AB111DFFD47C00B72C99 /* 三味书签 */ = {
+		0BF6AB111DFFD47C00B72C99 /* bookmark */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0BF6AB2F1DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "三味书签" */;
+			buildConfigurationList = 0BF6AB2F1DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "bookmark" */;
 			buildPhases = (
 				8409DF1F3955D46580CE3B94 /* [CP] Check Pods Manifest.lock */,
 				0BF6AB0E1DFFD47C00B72C99 /* Sources */,
@@ -302,14 +318,14 @@
 			);
 			dependencies = (
 			);
-			name = "三味书签";
+			name = bookmark;
 			productName = bookmark;
-			productReference = 0BF6AB121DFFD47C00B72C99 /* 三味书签.app */;
+			productReference = 0BF6AB121DFFD47C00B72C99 /* bookmark.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0BF6AB251DFFD47C00B72C99 /* 三味书签Tests */ = {
+		0BF6AB251DFFD47C00B72C99 /* bookmarkTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0BF6AB321DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "三味书签Tests" */;
+			buildConfigurationList = 0BF6AB321DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "bookmarkTests" */;
 			buildPhases = (
 				9C473E358231109609E34E27 /* [CP] Check Pods Manifest.lock */,
 				0BF6AB221DFFD47C00B72C99 /* Sources */,
@@ -323,9 +339,9 @@
 			dependencies = (
 				0BF6AB281DFFD47C00B72C99 /* PBXTargetDependency */,
 			);
-			name = "三味书签Tests";
+			name = bookmarkTests;
 			productName = bookmarkTests;
-			productReference = 0BF6AB261DFFD47C00B72C99 /* 三味书签Tests.xctest */;
+			productReference = 0BF6AB261DFFD47C00B72C99 /* bookmarkTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -351,7 +367,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0BF6AB0D1DFFD47C00B72C99 /* Build configuration list for PBXProject "三味书签" */;
+			buildConfigurationList = 0BF6AB0D1DFFD47C00B72C99 /* Build configuration list for PBXProject "bookmark" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -364,8 +380,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0BF6AB111DFFD47C00B72C99 /* 三味书签 */,
-				0BF6AB251DFFD47C00B72C99 /* 三味书签Tests */,
+				0BF6AB111DFFD47C00B72C99 /* bookmark */,
+				0BF6AB251DFFD47C00B72C99 /* bookmarkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -544,7 +560,7 @@
 /* Begin PBXTargetDependency section */
 		0BF6AB281DFFD47C00B72C99 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0BF6AB111DFFD47C00B72C99 /* 三味书签 */;
+			target = 0BF6AB111DFFD47C00B72C99 /* bookmark */;
 			targetProxy = 0BF6AB271DFFD47C00B72C99 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -662,7 +678,7 @@
 				INFOPLIST_FILE = bookmark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.niuniu.bookmark;
-				PRODUCT_NAME = "三味书签";
+				PRODUCT_NAME = bookmark;
 				PROVISIONING_PROFILE_SPECIFIER = bookmarkstore;
 				SWIFT_VERSION = 3.0;
 			};
@@ -678,7 +694,7 @@
 				INFOPLIST_FILE = bookmark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.niuniu.bookmark;
-				PRODUCT_NAME = "三味书签";
+				PRODUCT_NAME = bookmark;
 				PROVISIONING_PROFILE_SPECIFIER = bookmarkstore;
 				SWIFT_VERSION = 3.0;
 			};
@@ -695,7 +711,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.niuniu.bookmarkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/三味书签.app/三味书签";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bookmark.app/bookmark";
 			};
 			name = Debug;
 		};
@@ -710,14 +726,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.niuniu.bookmarkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/三味书签.app/三味书签";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bookmark.app/bookmark";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0BF6AB0D1DFFD47C00B72C99 /* Build configuration list for PBXProject "三味书签" */ = {
+		0BF6AB0D1DFFD47C00B72C99 /* Build configuration list for PBXProject "bookmark" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0BF6AB2D1DFFD47C00B72C99 /* Debug */,
@@ -726,7 +742,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0BF6AB2F1DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "三味书签" */ = {
+		0BF6AB2F1DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "bookmark" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0BF6AB301DFFD47C00B72C99 /* Debug */,
@@ -735,7 +751,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0BF6AB321DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "三味书签Tests" */ = {
+		0BF6AB321DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "bookmarkTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0BF6AB331DFFD47C00B72C99 /* Debug */,

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CBE4243692659416E25414254A1F97E53DF245D9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F6907BBFB9A21E6A04624754BC6863299DF6FFE5" : 9223372036854775807,
+    "CBE4243692659416E25414254A1F97E53DF245D9" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0ACAB89F-ED52-403E-A05B-3D8FDAB1AB81",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F6907BBFB9A21E6A04624754BC6863299DF6FFE5" : "bookmark\/bookmark\/third_party\/ArrowSlider\/",
+    "CBE4243692659416E25414254A1F97E53DF245D9" : "bookmark\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "三味书签",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "bookmark\/三味书签.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:lpniuniu\/bookmark.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CBE4243692659416E25414254A1F97E53DF245D9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:lpniuniu\/ArrowSlider.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F6907BBFB9A21E6A04624754BC6863299DF6FFE5"
+    }
+  ]
+}
