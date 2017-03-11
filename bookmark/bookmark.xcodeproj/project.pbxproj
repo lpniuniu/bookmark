@@ -84,12 +84,12 @@
 		0BF514081E2881BC008F2676 /* BookSettingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookSettingData.swift; path = bookmark/data/BookSettingData.swift; sourceTree = "<group>"; };
 		0BF514291E2DB0F7008F2676 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationManager.swift; path = BookBusiness/NotificationManager.swift; sourceTree = "<group>"; };
 		0BF5143E1E2F674D008F2676 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		0BF6AB121DFFD47C00B72C99 /* 三味书签.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "三味书签.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BF6AB121DFFD47C00B72C99 /* bookmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF6AB151DFFD47C00B72C99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BF6AB1C1DFFD47C00B72C99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BF6AB1F1DFFD47C00B72C99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BF6AB211DFFD47C00B72C99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0BF6AB261DFFD47C00B72C99 /* 三味书签Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "三味书签Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BF6AB261DFFD47C00B72C99 /* bookmarkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bookmarkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF6AB2A1DFFD47C00B72C99 /* bookmarkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookmarkTests.swift; sourceTree = "<group>"; };
 		0BF6AB2C1DFFD47C00B72C99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2284B64C52341F0B8A05A82D /* Pods_bookmark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookmark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,8 +228,8 @@
 		0BF6AB131DFFD47C00B72C99 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0BF6AB121DFFD47C00B72C99 /* 三味书签.app */,
-				0BF6AB261DFFD47C00B72C99 /* 三味书签Tests.xctest */,
+				0BF6AB121DFFD47C00B72C99 /* bookmark.app */,
+				0BF6AB261DFFD47C00B72C99 /* bookmarkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -302,9 +302,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0BF6AB111DFFD47C00B72C99 /* 三味书签 */ = {
+		0BF6AB111DFFD47C00B72C99 /* bookmark */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0BF6AB2F1DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "三味书签" */;
+			buildConfigurationList = 0BF6AB2F1DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "bookmark" */;
 			buildPhases = (
 				8409DF1F3955D46580CE3B94 /* [CP] Check Pods Manifest.lock */,
 				0BF6AB0E1DFFD47C00B72C99 /* Sources */,
@@ -318,14 +318,14 @@
 			);
 			dependencies = (
 			);
-			name = "三味书签";
+			name = bookmark;
 			productName = bookmark;
-			productReference = 0BF6AB121DFFD47C00B72C99 /* 三味书签.app */;
+			productReference = 0BF6AB121DFFD47C00B72C99 /* bookmark.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0BF6AB251DFFD47C00B72C99 /* 三味书签Tests */ = {
+		0BF6AB251DFFD47C00B72C99 /* bookmarkTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0BF6AB321DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "三味书签Tests" */;
+			buildConfigurationList = 0BF6AB321DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "bookmarkTests" */;
 			buildPhases = (
 				9C473E358231109609E34E27 /* [CP] Check Pods Manifest.lock */,
 				0BF6AB221DFFD47C00B72C99 /* Sources */,
@@ -339,9 +339,9 @@
 			dependencies = (
 				0BF6AB281DFFD47C00B72C99 /* PBXTargetDependency */,
 			);
-			name = "三味书签Tests";
+			name = bookmarkTests;
 			productName = bookmarkTests;
-			productReference = 0BF6AB261DFFD47C00B72C99 /* 三味书签Tests.xctest */;
+			productReference = 0BF6AB261DFFD47C00B72C99 /* bookmarkTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -368,7 +368,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0BF6AB0D1DFFD47C00B72C99 /* Build configuration list for PBXProject "三味书签" */;
+			buildConfigurationList = 0BF6AB0D1DFFD47C00B72C99 /* Build configuration list for PBXProject "bookmark" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -381,8 +381,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0BF6AB111DFFD47C00B72C99 /* 三味书签 */,
-				0BF6AB251DFFD47C00B72C99 /* 三味书签Tests */,
+				0BF6AB111DFFD47C00B72C99 /* bookmark */,
+				0BF6AB251DFFD47C00B72C99 /* bookmarkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -561,7 +561,7 @@
 /* Begin PBXTargetDependency section */
 		0BF6AB281DFFD47C00B72C99 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0BF6AB111DFFD47C00B72C99 /* 三味书签 */;
+			target = 0BF6AB111DFFD47C00B72C99 /* bookmark */;
 			targetProxy = 0BF6AB271DFFD47C00B72C99 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -679,7 +679,7 @@
 				INFOPLIST_FILE = bookmark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.niuniu.bookmark;
-				PRODUCT_NAME = "三味书签";
+				PRODUCT_NAME = bookmark;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
@@ -695,7 +695,7 @@
 				INFOPLIST_FILE = bookmark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.niuniu.bookmark;
-				PRODUCT_NAME = "三味书签";
+				PRODUCT_NAME = bookmark;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
@@ -712,7 +712,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.niuniu.bookmarkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/三味书签.app/三味书签";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bookmark.app/bookmark";
 			};
 			name = Debug;
 		};
@@ -727,14 +727,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.niuniu.bookmarkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/三味书签.app/三味书签";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bookmark.app/bookmark";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0BF6AB0D1DFFD47C00B72C99 /* Build configuration list for PBXProject "三味书签" */ = {
+		0BF6AB0D1DFFD47C00B72C99 /* Build configuration list for PBXProject "bookmark" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0BF6AB2D1DFFD47C00B72C99 /* Debug */,
@@ -743,7 +743,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0BF6AB2F1DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "三味书签" */ = {
+		0BF6AB2F1DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "bookmark" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0BF6AB301DFFD47C00B72C99 /* Debug */,
@@ -752,7 +752,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0BF6AB321DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "三味书签Tests" */ = {
+		0BF6AB321DFFD47C00B72C99 /* Build configuration list for PBXNativeTarget "bookmarkTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0BF6AB331DFFD47C00B72C99 /* Debug */,
