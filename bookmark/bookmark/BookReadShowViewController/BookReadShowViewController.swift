@@ -155,7 +155,7 @@ class BookReadShowViewController: UIViewController {
     
     private func readBooksCountCurrentMonth() -> Int {
         let realm = try! Realm()
-        return realm.objects(BookReadDoneData.self).filter("doneDate >= %@", Date().startMonthOfDate).filter("doneDate <= %@", Date().endMonthOfDate).count
+        return realm.objects(BookData.self).filter("doneDate >= %@", Date().startMonthOfDate).filter("doneDate <= %@", Date().endMonthOfDate).count
     }
     
     override func viewWillAppear(_ animated: Bool) {

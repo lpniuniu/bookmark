@@ -31,7 +31,7 @@ class BookDoneListTableView: UITableView, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let realm = try! Realm()
-        return realm.objects(BookReadDoneData.self).count
+        return realm.objects(BookData.self).filter("done == true").count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -49,16 +49,20 @@ class BookDoneListTableView: UITableView, UITableViewDelegate, UITableViewDataSo
         cell.delegate = self
         
         let realm = try! Realm()
-        let result = realm.objects(BookReadDoneData.self)[indexPath.row]
+        let result = realm.objects(BookData.self).filter("done == true")[indexPath.row]
         
-        if let imageData = result.bookData?.photo {
-            cell.bookImageView.image = UIImage(data:imageData)
-        } else if let imageUrl = result.bookData?.photoUrl {
+        if let imageUrl = result.photoUrl {
             let url = URL(string: imageUrl)
-            cell.bookImageView.kf.setImage(with: url)
+            if (url?.scheme == "http" || url?.scheme == "https") {
+                cell.bookImageView.kf.setImage(with: url)
+            } else {
+                let doc = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                let photoPath = doc?.appendingPathComponent("photos")
+                cell.bookImageView.image = UIImage(contentsOfFile: (photoPath?.appendingPathComponent((url?.path)!).path)!)
+            }
         }
         
-        cell.nameLabel.text = result.bookData?.name
+        cell.nameLabel.text = result.name
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy MM dd"
         cell.doneDateLabel.text = dateFormatter.string(from: result.doneDate!)
@@ -73,10 +77,9 @@ class BookDoneListTableView: UITableView, UITableViewDelegate, UITableViewDataSo
     
     func swipeableTableViewCell(_ cell: SWTableViewCell!, didTriggerRightUtilityButtonWith index: Int) {
         let realm = try! Realm()
-        let bookDoneData = realm.objects(BookReadDoneData.self)[(indexPath(for: cell)?.row)!]
+        let bookData = realm.objects(BookData.self).filter("done == true")[(indexPath(for: cell)?.row)!]
         try! realm.write({                                                                                    
-            realm.delete(bookDoneData.bookData!)
-            realm.delete(bookDoneData)
+            realm.delete(bookData)
         })
         deleteRows(at:[indexPath(for: cell)!], with: .fade)
     }

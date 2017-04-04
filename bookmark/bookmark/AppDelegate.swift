@@ -17,24 +17,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func prepareRealm() {
-        var config = Realm.Configuration.defaultConfiguration
-        config.schemaVersion = 1
-        Realm.Configuration.defaultConfiguration = config
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            schemaVersion: 2,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 2) {
+                    migration.enumerateObjects(ofType: BookData.className()) { oldObject, newObject in
+                        let photoUrl = oldObject!["photoUrl"] as? String
+                        if (photoUrl == nil) {
+                            let urlString = Bundle.main.path(forResource: "book_default", ofType: "png")
+                            do {
+                                let doc = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                                let photoPath = doc?.appendingPathComponent("photos")
+                                do {
+                                    try FileManager.default.createDirectory(atPath: (photoPath?.absoluteString)!, withIntermediateDirectories: false, attributes: nil)
+                                } catch let error as NSError {
+                                    print(error.localizedDescription);
+                                }
+                                let url = photoPath?.appendingPathComponent("book_default")
+                                try FileManager.default.copyItem(at:URL(fileURLWithPath: urlString!), to: url!)
+                                newObject!["photoUrl"] = "book_default"
+                            } catch let error as NSError {
+                                print(error.localizedDescription);
+                            }
+                        }
+                    }
+                }
+        })
         
         let realm = try! Realm()
         if realm.objects(BookSettingData.self).count == 0 {
-            let encourage_switch_data = BookSettingData()
-            encourage_switch_data.key = "encourage_switch"
-            encourage_switch_data.value = "1"
-            try! realm.write({
-                realm.add(encourage_switch_data)
-            })
-            let encourage_time_data = BookSettingData()
-            encourage_time_data.key = "encourage_time"
-            encourage_time_data.value = "21:00"
-            try! realm.write({
-                realm.add(encourage_time_data)
-            })
             let urge_switch_data = BookSettingData()
             urge_switch_data.key = "urge_switch"
             urge_switch_data.value = "1"
@@ -92,7 +103,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        NotificationManager.sendEncourageNoti()
         NotificationManager.sendUrge()
     }
 

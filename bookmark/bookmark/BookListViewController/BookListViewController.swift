@@ -174,11 +174,41 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
             book.pageTotal = Int((pageTextField?.text)!)!
             if ((imageView?.image) != nil && (imageView?.image) != self.cameraIcon) {
                 let data:Data? = UIImagePNGRepresentation((imageView?.image!)!) as Data?
-                book.photo = data
+                
+                if let doc = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                    
+                    let photoPath = doc.appendingPathComponent("photos")
+                    do {
+                        try FileManager.default.createDirectory(atPath: photoPath.path, withIntermediateDirectories: false, attributes: nil)
+                    } catch let error as NSError {
+                        print(error.localizedDescription);
+                    }
+                    
+                    let file = UUID().uuidString
+                    let url = photoPath.appendingPathComponent(file)
+                    do {
+                        try data?.write(to: url);
+                    }
+                    catch {}
+                    book.photoUrl = file
+                }
             } else {
-                let default_img = UIImage(named: "book_default")!
-                let data:Data? = UIImagePNGRepresentation(default_img) as Data?
-                book.photo = data
+                let urlString = Bundle.main.path(forResource: "book_default", ofType: "png")
+                
+                do {
+                    let doc = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                    let photoPath = doc?.appendingPathComponent("photos")
+                    do {
+                        try FileManager.default.createDirectory(atPath: (photoPath?.path)!, withIntermediateDirectories: false, attributes: nil)
+                    } catch let error as NSError {
+                        print(error.localizedDescription);
+                    }
+                    let url = photoPath?.appendingPathComponent("book_default")
+                    try FileManager.default.copyItem(at:URL(fileURLWithPath: urlString!), to: url!)
+                    book.photoUrl = "book_default"
+                } catch let error as NSError {
+                    print(error.localizedDescription);
+                }
             }
             let realm = try! Realm()
             try! realm.write({ 

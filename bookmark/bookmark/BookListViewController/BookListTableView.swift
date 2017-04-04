@@ -92,11 +92,15 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         cell.delegate = self
         
         let realm = try! Realm()
-        if let imageData = realm.objects(BookData.self).filter("done == false")[indexPath.row].photo {
-            cell.bookImageView.image = UIImage(data:imageData)
-        } else if let imageUrl = realm.objects(BookData.self).filter("done == false")[indexPath.row].photoUrl {
+        if let imageUrl = realm.objects(BookData.self).filter("done == false")[indexPath.row].photoUrl {
             let url = URL(string: imageUrl)
-            cell.bookImageView.kf.setImage(with: url)
+            if (url?.scheme == "http" || url?.scheme == "https") {
+                cell.bookImageView.kf.setImage(with: url)
+            } else {
+                let doc = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                let photoPath = doc?.appendingPathComponent("photos")
+                cell.bookImageView.image = UIImage(contentsOfFile: (photoPath?.appendingPathComponent((url?.path)!).path)!)
+            }
         }
         cell.nameLabel.text = realm.objects(BookData.self).filter("done == false")[indexPath.row].name
         cell.pageLabel.text = "\(realm.objects(BookData.self).filter("done == false")[indexPath.row].pageCurrent)/\(realm.objects(BookData.self).filter("done == false")[indexPath.row].pageTotal)"
@@ -108,12 +112,8 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
             let realm = try! Realm()
             let bookData = realm.objects(BookData.self).filter("done == false")[(indexPath(for: cell)?.row)!]
             
-            let bookDone:BookReadDoneData = BookReadDoneData()
-            bookDone.bookData = bookData
-            bookDone.doneDate = Date()
             try! realm.write({
                 bookData.done = true
-                realm.add(bookDone)
             })
             deleteRows(at:[indexPath(for: cell)!], with: .fade)
             Bulb.bulbGlobal().fire(BookListDidDeselectSignal.signalDefault(), data:nil)
@@ -134,8 +134,12 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
             deleteConfirmAlert.view.tintColor = UIColor.greenSea()
             let confirmAction = UIAlertAction(title: "确认", style: .default, handler: { (action:UIAlertAction) in
                 let realm = try! Realm()
+                let object = realm.objects(BookData.self)[(self.indexPath(for: cell)?.row)!]
+                let doc = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                let photoPath = doc?.appendingPathComponent("photos")
+                try! FileManager.default.removeItem(at: (photoPath?.appendingPathComponent(object.photoUrl!))!)
                 try! realm.write({
-                    realm.delete(realm.objects(BookData.self).filter("done == false")[(self.indexPath(for: cell)?.row)!])
+                    realm.delete(object)
                 })
                 self.deleteRows(at:[self.indexPath(for: cell)!], with: .fade)
                 Bulb.bulbGlobal().fire(BookListDidDeselectSignal.signalDefault(), data:nil)

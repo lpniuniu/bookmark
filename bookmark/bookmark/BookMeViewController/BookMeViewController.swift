@@ -33,46 +33,7 @@ class BookMeViewController: FormViewController {
         notiAuth =  signal != nil && signal!.isOn()
         form = Section()
             <<< SwitchRow(){
-                $0.title = "鼓励提醒(连续阅读3天)"
-                if notiAuth == false {
-                    $0.value = false
-                } else {
-                    $0.value = dict["encourage_switch"]!.value == "1"
-                }
-                }.onChange({ (row:SwitchRow) in
-                
-                let realm = try! Realm()
-                try! realm.write {
-                    if row.value == false {
-                        dict["encourage_switch"]!.value = "0"
-                    } else {
-                        if self.notiAuth == false {
-                            UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)! , options: [:], completionHandler: nil)
-                            self.notiAuth = true
-                        }
-                        dict["encourage_switch"]!.value = "1"
-                    }
-                }
-            })
-            <<< TimeRow(){
-                $0.title = "鼓励提醒时间"
-                let dateFormatter = DateFormatter()
-                let initialString = dict["encourage_time"]!.value!
-                dateFormatter.dateFormat = "HH:mm"
-                if let date = dateFormatter.date(from: initialString) {
-                    $0.value = date
-                }
-                }.onChange({ (row:TimeRow) in
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "HH:mm"
-                    let dateString = dateFormatter.string(from: row.value!)
-                    let realm = try! Realm()
-                    try! realm.write {
-                        dict["encourage_time"]!.value = dateString
-                    }
-            })
-            <<< SwitchRow(){
-                $0.title = "督促提醒(两天没有阅读)"
+                $0.title = "提醒"
                 if notiAuth == false {
                     $0.value = false
                 } else {
@@ -94,7 +55,7 @@ class BookMeViewController: FormViewController {
                 }
             })
             <<< TimeRow(){
-                $0.title = "督促提醒时间"
+                $0.title = "提醒时间"
                 let dateFormatter = DateFormatter()
                 let initialString = dict["urge_time"]!.value!
                 dateFormatter.dateFormat = "HH:mm"
