@@ -114,6 +114,7 @@ class BookListTableView: UITableView, UITableViewDelegate, UITableViewDataSource
             
             try! realm.write({
                 bookData.done = true
+                bookData.doneDate = Date()
             })
             deleteRows(at:[indexPath(for: cell)!], with: .fade)
             Bulb.bulbGlobal().fire(BookListDidDeselectSignal.signalDefault(), data:nil)
