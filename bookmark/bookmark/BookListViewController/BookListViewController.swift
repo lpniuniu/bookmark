@@ -193,21 +193,16 @@ class BookListViewController: UIViewController, UIImagePickerControllerDelegate,
                     book.photoUrl = file
                 }
             } else {
-                let urlString = Bundle.main.path(forResource: "book_default", ofType: "png")
-                
-                do {
-                    let doc = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-                    let photoPath = doc?.appendingPathComponent("photos")
-                    do {
-                        try FileManager.default.createDirectory(atPath: (photoPath?.path)!, withIntermediateDirectories: false, attributes: nil)
-                    } catch let error as NSError {
-                        print(error.localizedDescription);
-                    }
-                    let url = photoPath?.appendingPathComponent("book_default")
-                    try FileManager.default.copyItem(at:URL(fileURLWithPath: urlString!), to: url!)
+                let image = UIImage(named: "book_default")
+                let data:Data? = UIImagePNGRepresentation(image!) as Data?
+                if let doc = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                    let photoPath = doc.appendingPathComponent("photos")
+                    
+                    try? FileManager.default.createDirectory(atPath: photoPath.path, withIntermediateDirectories: false, attributes: nil)
+                    
+                    let url = photoPath.appendingPathComponent("book_default")
+                    try? data?.write(to: url);
                     book.photoUrl = "book_default"
-                } catch let error as NSError {
-                    print(error.localizedDescription);
                 }
             }
             let realm = try! Realm()
